@@ -55,6 +55,20 @@ export const translations = {
       heading: 'Що ми робимо',
       items: ['Маркетинг', 'Відеографія', 'Брендинг', 'Стратегія', 'Освіта'],
     },
+    splineHeading: 'Створено з рухом',
+    splineSubtitle:
+      'Живий 3D-простір, який працює у безкінечному циклі — частина нашої візуальної мови.',
+    splineSide: {
+      watermark: 'РУХ',
+      corner: '// LAB 03',
+      caption: 'Безкінечний цикл • Autoplay',
+      items: [
+        { num: '01', text: '3D-рендер' },
+        { num: '02', text: 'Інтеракція' },
+        { num: '03', text: 'WebGL' },
+        { num: '04', text: 'Motion-дизайн' },
+      ],
+    },
     education: {
       eyebrow: 'Освіта',
       title: 'Вчимо того, що робимо самі.',
@@ -154,6 +168,20 @@ export const translations = {
       heading: 'What we do',
       items: ['Marketing', 'Videography', 'Branding', 'Strategy', 'Education'],
     },
+    splineHeading: 'Crafted with motion',
+    splineSubtitle:
+      'A live 3D space running on an infinite loop — part of our visual language.',
+    splineSide: {
+      watermark: 'MOTION',
+      corner: '// LAB 03',
+      caption: 'Infinite loop • Autoplay',
+      items: [
+        { num: '01', text: '3D render' },
+        { num: '02', text: 'Interaction' },
+        { num: '03', text: 'WebGL' },
+        { num: '04', text: 'Motion design' },
+      ],
+    },
     education: {
       eyebrow: 'Education',
       title: 'We teach what we do.',
@@ -252,6 +280,20 @@ export const translations = {
     stripes: {
       heading: 'Что мы делаем',
       items: ['Маркетинг', 'Видеография', 'Брендинг', 'Стратегия', 'Образование'],
+    },
+    splineHeading: 'Сделано с движением',
+    splineSubtitle:
+      'Живое 3D-пространство в бесконечном цикле — часть нашего визуального языка.',
+    splineSide: {
+      watermark: 'MOTION',
+      corner: '// LAB 03',
+      caption: 'Бесконечный цикл • Autoplay',
+      items: [
+        { num: '01', text: '3D-рендер' },
+        { num: '02', text: 'Интеракция' },
+        { num: '03', text: 'WebGL' },
+        { num: '04', text: 'Motion-дизайн' },
+      ],
     },
     education: {
       eyebrow: 'Обучение',

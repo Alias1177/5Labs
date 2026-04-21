@@ -2,6 +2,7 @@ import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import HorizontalBars from './components/HorizontalBars.jsx';
+import SplineScene from './components/SplineScene.jsx';
 import Services from './components/Services.jsx';
 import Education from './components/Education.jsx';
 import Stats from './components/Stats.jsx';
@@ -16,6 +17,7 @@ export default function App() {
         <Hero />
         <About />
         <HorizontalBars />
+        <SplineScene />
         <Services />
         <Education />
         <Stats />
