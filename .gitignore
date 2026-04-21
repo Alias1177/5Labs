@@ -1,0 +1,19 @@
+node_modules
+dist
+dist-ssr
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.log
+.vite
+.cache
+
+# Vite tmp
+vite.config.*.timestamp-*.mjs
+vite.config.*.timestamp-*.js
+
+# IDE
+.vscode
+.idea
+*.swp
