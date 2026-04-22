@@ -5,6 +5,8 @@ import ScrollToHash from './components/ScrollToHash.jsx';
 import Home from './pages/Home.jsx';
 import Mentors from './pages/Mentors.jsx';
 import Login from './pages/Login.jsx';
+import SignUp from './pages/SignUp.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 export default function App() {
   return (
@@ -16,8 +18,9 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/mentors" element={<Mentors />} />
           <Route path="/login" element={<Login />} />
-          {/* Фолбек — всё неизвестное отдаём на главную */}
-          <Route path="*" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          {/* Фолбек — всё неизвестное отдаём на 404 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

@@ -3,21 +3,27 @@ import { Link } from 'react-router-dom';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useI18n } from '../i18n/I18nContext.jsx';
 
-export default function Login() {
+export default function SignUp() {
   const { t } = useI18n();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [active, setActive] = useState(null); // 'email' | 'password' | null
+  const [confirm, setConfirm] = useState('');
+  const [active, setActive] = useState(null); // 'name' | 'email' | 'password' | 'confirm' | null
 
-  // Refs для измерения позиций полей и общий индикатор
+  // Refs для измерения позиций полей и общий индикатор-змейка
   const wrapperRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
+  const refs = {
+    name: useRef(null),
+    email: useRef(null),
+    password: useRef(null),
+    confirm: useRef(null),
+  };
   const [box, setBox] = useState({ top: 0, left: 0, width: 0, height: 0, visible: false });
 
   const measure = (which) => {
     const wrap = wrapperRef.current;
-    const target = which === 'email' ? emailRef.current : which === 'password' ? passwordRef.current : null;
+    const target = which ? refs[which]?.current : null;
     if (!wrap || !target) {
       setBox((s) => ({ ...s, visible: false }));
       return;
@@ -44,15 +50,14 @@ export default function Login() {
     return () => window.removeEventListener('resize', onResize);
   }, [active]);
 
-  // Геометрия "змейки" — центр штриха сажаем ровно на серую рамку инпута
+  // Геометрия "змейки" — центр штриха на серой рамке (1px)
   const strokeW = 2;
-  const borderW = 1; // rounded-xl border-1 на инпуте
-  const inset = borderW / 2; // центр серой рамки = 0.5px от bounding rect
+  const borderW = 1;
+  const inset = borderW / 2;
   const radius = 12; // rounded-xl
   const rectW = Math.max(0, box.width - 2 * inset);
   const rectH = Math.max(0, box.height - 2 * inset);
   const rx = Math.max(0, radius - inset);
-  // Точный периметр скруглённого прямоугольника
   const perimeter = Math.max(0, 2 * (rectW + rectH) - 2 * rx * (4 - Math.PI));
   const dashLen = 70;
   const gap = Math.max(1, perimeter - dashLen);
@@ -60,9 +65,12 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: real auth
-    console.log('login', { email });
+    // TODO: real registration
+    console.log('signup', { name, email });
   };
+
+  const inputClass =
+    'mt-1 w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-ink outline-none transition focus:border-ink/25 dark:border-white/15 dark:bg-white/5 dark:text-paper dark:focus:border-white/25';
 
   return (
     <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden pt-24 lg:pt-28">
@@ -81,22 +89,38 @@ export default function Login() {
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M13 8H3M7 12L3 8l4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              {t.login.back}
+              {t.signup.back}
             </Link>
 
             <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-5xl">
-              {t.login.title}
+              {t.signup.title}
             </h1>
-            <p className="mt-3 text-muted">{t.login.subtitle}</p>
+            <p className="mt-3 text-muted">{t.signup.subtitle}</p>
 
             <form onSubmit={handleSubmit} className="mt-8">
-              {/* Wrapper с общим индикатором */}
+              {/* Wrapper с бегущей змейкой */}
               <div ref={wrapperRef} className="relative">
                 <div className="space-y-5">
                   <label className="block">
-                    <span className="text-xs uppercase tracking-widest text-subtle">{t.login.email}</span>
+                    <span className="text-xs uppercase tracking-widest text-subtle">{t.signup.name}</span>
                     <input
-                      ref={emailRef}
+                      ref={refs.name}
+                      type="text"
+                      required
+                      autoComplete="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      onFocus={() => setActive('name')}
+                      onBlur={() => setActive((s) => (s === 'name' ? null : s))}
+                      placeholder={t.signup.namePh}
+                      className={inputClass}
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="text-xs uppercase tracking-widest text-subtle">{t.signup.email}</span>
+                    <input
+                      ref={refs.email}
                       type="email"
                       required
                       autoComplete="email"
@@ -104,29 +128,44 @@ export default function Login() {
                       onChange={(e) => setEmail(e.target.value)}
                       onFocus={() => setActive('email')}
                       onBlur={() => setActive((s) => (s === 'email' ? null : s))}
-                      placeholder={t.login.emailPh}
-                      className="mt-1 w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-ink outline-none transition focus:border-ink/25 dark:border-white/15 dark:bg-white/5 dark:text-paper dark:focus:border-white/25"
+                      placeholder={t.signup.emailPh}
+                      className={inputClass}
                     />
                   </label>
 
                   <label className="block">
-                    <span className="text-xs uppercase tracking-widest text-subtle">{t.login.password}</span>
+                    <span className="text-xs uppercase tracking-widest text-subtle">{t.signup.password}</span>
                     <input
-                      ref={passwordRef}
+                      ref={refs.password}
                       type="password"
                       required
-                      autoComplete="current-password"
+                      autoComplete="new-password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       onFocus={() => setActive('password')}
                       onBlur={() => setActive((s) => (s === 'password' ? null : s))}
-                      placeholder={t.login.passwordPh}
-                      className="mt-1 w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-ink outline-none transition focus:border-ink/25 dark:border-white/15 dark:bg-white/5 dark:text-paper dark:focus:border-white/25"
+                      placeholder={t.signup.passwordPh}
+                      className={inputClass}
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="text-xs uppercase tracking-widest text-subtle">{t.signup.confirm}</span>
+                    <input
+                      ref={refs.confirm}
+                      type="password"
+                      required
+                      autoComplete="new-password"
+                      value={confirm}
+                      onChange={(e) => setConfirm(e.target.value)}
+                      onFocus={() => setActive('confirm')}
+                      onBlur={() => setActive((s) => (s === 'confirm' ? null : s))}
+                      placeholder={t.signup.confirmPh}
+                      className={inputClass}
                     />
                   </label>
                 </div>
 
-                {/* Анимация "змейки": зелёный сегмент бежит по периметру активного поля */}
                 <style>{`
                   @keyframes snake-run {
                     to { stroke-dashoffset: var(--snake-loop); }
@@ -164,24 +203,19 @@ export default function Login() {
                 </svg>
               </div>
 
-              <div className="mt-5 flex items-center justify-between text-sm">
-                <label className="inline-flex items-center gap-2 text-ink/70 dark:text-white/70">
-                  <input type="checkbox" className="h-4 w-4 rounded border-ink/30 accent-violet dark:accent-lime" />
-                  {t.login.remember}
-                </label>
-                <a href="#" className="link-underline text-ink/70 hover:text-ink dark:text-white/70 dark:hover:text-paper">
-                  {t.login.forgot}
-                </a>
-              </div>
+              <label className="mt-5 flex items-start gap-2 text-sm text-ink/70 dark:text-white/70">
+                <input type="checkbox" required className="mt-0.5 h-4 w-4 rounded border-ink/30 accent-violet dark:accent-lime" />
+                <span>{t.signup.terms}</span>
+              </label>
 
               <button type="submit" className="btn-primary mt-5 w-full justify-center">
-                {t.login.submit}
+                {t.signup.submit}
               </button>
 
               <p className="mt-5 text-center text-sm text-muted">
-                {t.login.noAccount}{' '}
-                <Link to="/signup" className="link-underline text-ink hover:text-violet dark:text-paper dark:hover:text-lime">
-                  {t.login.register}
+                {t.signup.hasAccount}{' '}
+                <Link to="/login" className="link-underline text-ink hover:text-violet dark:text-paper dark:hover:text-lime">
+                  {t.signup.signin}
                 </Link>
               </p>
             </form>
@@ -191,7 +225,7 @@ export default function Login() {
           <div className="relative flex items-center justify-center">
             <div className="pointer-events-none absolute inset-0 -z-10 mx-auto h-full w-full rounded-full bg-glow-violet opacity-40 blur-3xl dark:bg-glow-lime" />
             <DotLottieReact
-              src="/marketing-telephone.json"
+              src="/digital.json"
               autoplay
               loop
               style={{ width: '100%', maxWidth: '520px', height: '520px' }}
