@@ -159,9 +159,9 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <LangSwitcher className="hidden md:inline-flex" />
           <ThemeToggle />
-          <HashLink to="#contact" className="hidden lg:inline-flex btn-primary">
-            {t.nav.contact}
-          </HashLink>
+          <Link to="/login" className="hidden lg:inline-flex btn-primary">
+            Login
+          </Link>
 
           {/* Mobile burger */}
           <button
@@ -247,9 +247,9 @@ export default function Header() {
           </HashLink>
           <div className="mt-4 flex items-center justify-between">
             <LangSwitcher />
-            <HashLink to="#contact" onClick={closeMobile} className="btn-primary">
-              {t.nav.contact}
-            </HashLink>
+            <Link to="/login" onClick={closeMobile} className="btn-primary">
+              Login
+            </Link>
           </div>
         </div>
       </div>

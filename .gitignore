@@ -17,3 +17,5 @@ vite.config.*.timestamp-*.js
 .vscode
 .idea
 *.swp
+.vercel
+.env*.local

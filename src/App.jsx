@@ -4,6 +4,7 @@ import Footer from './components/Footer.jsx';
 import ScrollToHash from './components/ScrollToHash.jsx';
 import Home from './pages/Home.jsx';
 import Mentors from './pages/Mentors.jsx';
+import Login from './pages/Login.jsx';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/mentors" element={<Mentors />} />
+          <Route path="/login" element={<Login />} />
           {/* Фолбек — всё неизвестное отдаём на главную */}
           <Route path="*" element={<Home />} />
         </Routes>
