@@ -1,4 +1,5 @@
 import { useI18n } from '../i18n/I18nContext.jsx';
+import HighlightWords from './HighlightWords.jsx';
 
 function ArrowRight() {
   return (
@@ -23,8 +24,8 @@ export default function Hero() {
             {t.hero.eyebrow}
           </span>
 
-          <h1 className="mt-6 font-display text-hero font-bold">
-            {t.hero.title}
+          <h1 key={t.hero.title} className="mt-6 font-display text-hero font-bold leading-[1.1]">
+            <HighlightWords text={t.hero.title} step={0.65} sweepIn={0.22} />
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg text-muted lg:text-xl">

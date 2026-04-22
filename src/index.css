@@ -54,4 +54,33 @@
   .text-subtle {
     @apply text-ink/60 dark:text-white/60;
   }
+
+  /*
+   * Пословная lime-подсветка — эффект «выделения текста мышью».
+   * Каждое слово заворачивается в <span class="text-highlight"> с собственным
+   * animation-delay (staggered). За время анимации lime-фон заезжает слева
+   * направо, и цвет текста уходит к #000 для контраста на lime.
+   * Animation re-runs при смене key у родителя (например при смене языка).
+   */
+  /*
+   * .text-highlight — базовый стиль «выделения». Анимация задаётся inline
+   * в компоненте HighlightWords, потому что кейфреймы зависят от числа
+   * слов в тексте (может отличаться для TR/EN/RU).
+   */
+  .text-highlight {
+    display: inline-block;
+    background-image: linear-gradient(#C6FF33, #C6FF33);
+    background-size: 0% 100%;
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    padding: 0.05em 0.12em;
+    margin: 0 0.01em;
+    border-radius: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .text-highlight {
+      animation: none !important;
+      background-size: 0% 100%;
+    }
+  }
 }

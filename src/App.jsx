@@ -1,27 +1,22 @@
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
-import About from './components/About.jsx';
-import HorizontalBars from './components/HorizontalBars.jsx';
-import SplineScene from './components/SplineScene.jsx';
-import Services from './components/Services.jsx';
-import Education from './components/Education.jsx';
-import Stats from './components/Stats.jsx';
-import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import ScrollToHash from './components/ScrollToHash.jsx';
+import Home from './pages/Home.jsx';
+import Mentors from './pages/Mentors.jsx';
 
 export default function App() {
   return (
     <div className="relative min-h-screen bg-paper text-ink transition-colors duration-300 dark:bg-ink dark:text-paper">
+      <ScrollToHash />
       <Header />
       <main>
-        <Hero />
-        <About />
-        <HorizontalBars />
-        <SplineScene />
-        <Services />
-        <Education />
-        <Stats />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/mentors" element={<Mentors />} />
+          {/* Фолбек — всё неизвестное отдаём на главную */}
+          <Route path="*" element={<Home />} />
+        </Routes>
       </main>
       <Footer />
     </div>
