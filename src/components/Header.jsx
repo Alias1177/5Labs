@@ -65,7 +65,6 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: '#home', label: t.nav.home },
     { href: '#about', label: t.nav.about },
   ];
 

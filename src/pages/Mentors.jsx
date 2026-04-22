@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useI18n } from '../i18n/I18nContext.jsx';
+import Reveal from '../components/Reveal.jsx';
 
 /**
  * Инициалы для плейсхолдера, если фото не подставлено.
@@ -57,20 +58,17 @@ export default function Mentors() {
         className="pointer-events-none absolute left-1/2 top-20 -z-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-violet/20 blur-[120px] dark:bg-violet/30"
       />
       <div className="container-narrow">
-        <div className="mx-auto max-w-3xl text-center">
+        <Reveal className="mx-auto max-w-3xl text-center">
           <span className="eyebrow">{m.eyebrow}</span>
           <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
             {m.title}
           </h1>
           <p className="mt-6 text-lg text-muted">{m.subtitle}</p>
-        </div>
+        </Reveal>
 
         <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
           {m.list.map((person, idx) => (
-            <article
-              key={idx}
-              className="group flex flex-col items-center text-center"
-            >
+            <Reveal key={idx} as="article" delay={idx * 120} className="group flex flex-col items-center text-center">
               <div className="relative w-40 sm:w-48 lg:w-52">
                 <Avatar photo={person.photo} name={person.name} />
               </div>
@@ -83,7 +81,7 @@ export default function Mentors() {
               <p className="mt-4 w-full max-w-xs rounded-xl border border-ink/15 px-4 py-3 text-left text-sm leading-relaxed text-muted dark:border-white/15">
                 {person.bio}
               </p>
-            </article>
+            </Reveal>
           ))}
         </div>
 
