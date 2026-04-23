@@ -5,6 +5,7 @@ import { useAuth } from '../auth/AuthContext.jsx';
 import Logo from './Logo.jsx';
 import LangSwitcher from './LangSwitcher.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
+import ProfileMenu from './ProfileMenu.jsx';
 
 function ChevronDown({ className = 'h-3 w-3' }) {
   return (
@@ -167,20 +168,8 @@ export default function Header() {
           <LangSwitcher className="hidden md:inline-flex" />
           <ThemeToggle />
           {isAuthenticated ? (
-            <div className="hidden lg:flex items-center gap-2">
-              <Link to="/dashboard" className="btn-primary">
-                {t.dashboard?.eyebrow || 'Dashboard'}
-              </Link>
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="btn-ghost"
-                aria-label={t.dashboard?.logout || 'Log out'}
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M10 11l3-3-3-3M13 8H6M9 3H4a1 1 0 00-1 1v8a1 1 0 001 1h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
+            <div className="hidden lg:flex items-center">
+              <ProfileMenu />
             </div>
           ) : (
             <Link to="/login" className="hidden lg:inline-flex btn-primary">
