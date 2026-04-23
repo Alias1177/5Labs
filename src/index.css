@@ -5,10 +5,22 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Firefox */
+    scrollbar-width: none;
+    /* Legacy IE/Edge */
+    -ms-overflow-style: none;
   }
   body {
     @apply bg-paper text-ink font-sans transition-colors duration-300;
     font-feature-settings: 'ss01', 'cv11';
+  }
+  /* WebKit — Chrome, Safari, Edge (Chromium) */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
   }
   .dark body {
     @apply bg-ink text-paper;

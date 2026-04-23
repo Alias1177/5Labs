@@ -7,6 +7,10 @@ import Mentors from './pages/Mentors.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import NotFound from './pages/NotFound.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import Roadmap from './pages/Roadmap.jsx';
+import Topic from './pages/Topic.jsx';
+import ProtectedRoute from './auth/ProtectedRoute.jsx';
 
 export default function App() {
   return (
@@ -19,6 +23,16 @@ export default function App() {
           <Route path="/mentors" element={<Mentors />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/roadmap/:slug" element={<Topic />} />
           {/* Фолбек — всё неизвестное отдаём на 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>

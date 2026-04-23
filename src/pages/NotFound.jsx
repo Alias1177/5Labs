@@ -1,10 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useI18n } from '../i18n/I18nContext.jsx';
 
 export default function NotFound() {
   const { t } = useI18n();
-  const navigate = useNavigate();
 
   return (
     <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden pt-24 lg:pt-28">
@@ -35,9 +34,6 @@ export default function NotFound() {
                 </svg>
                 {t.notFound.home}
               </Link>
-              <button type="button" onClick={() => navigate(-1)} className="btn-ghost">
-                {t.notFound.back}
-              </button>
             </div>
           </div>
 

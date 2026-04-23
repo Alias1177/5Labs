@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
+import { useAuth } from '../auth/AuthContext.jsx';
 import Logo from './Logo.jsx';
 import LangSwitcher from './LangSwitcher.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
@@ -46,8 +47,15 @@ function HashLink({ to, className, children, onClick }) {
 
 export default function Header() {
   const { t } = useI18n();
+  const { isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -158,9 +166,27 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <LangSwitcher className="hidden md:inline-flex" />
           <ThemeToggle />
-          <Link to="/login" className="hidden lg:inline-flex btn-primary">
-            Login
-          </Link>
+          {isAuthenticated ? (
+            <div className="hidden lg:flex items-center gap-2">
+              <Link to="/dashboard" className="btn-primary">
+                {t.dashboard?.eyebrow || 'Dashboard'}
+              </Link>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="btn-ghost"
+                aria-label={t.dashboard?.logout || 'Log out'}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M10 11l3-3-3-3M13 8H6M9 3H4a1 1 0 00-1 1v8a1 1 0 001 1h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+          ) : (
+            <Link to="/login" className="hidden lg:inline-flex btn-primary">
+              Login
+            </Link>
+          )}
 
           {/* Mobile burger */}
           <button
@@ -244,11 +270,29 @@ export default function Header() {
           >
             {t.nav.contact}
           </HashLink>
-          <div className="mt-4 flex items-center justify-between">
+          <div className="mt-4 flex items-center justify-between gap-3">
             <LangSwitcher />
-            <Link to="/login" onClick={closeMobile} className="btn-primary">
-              Login
-            </Link>
+            {isAuthenticated ? (
+              <div className="flex items-center gap-2">
+                <Link to="/dashboard" onClick={closeMobile} className="btn-primary">
+                  {t.dashboard?.eyebrow || 'Dashboard'}
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    closeMobile();
+                    handleLogout();
+                  }}
+                  className="btn-ghost"
+                >
+                  {t.dashboard?.logout || 'Log out'}
+                </button>
+              </div>
+            ) : (
+              <Link to="/login" onClick={closeMobile} className="btn-primary">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
