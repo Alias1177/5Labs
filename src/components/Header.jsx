@@ -73,9 +73,7 @@ export default function Header() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  const navLinks = [
-    { href: '#about', label: t.nav.about },
-  ];
+  const navLinks = [];
 
   const closeMobile = () => setMobileOpen(false);
 
@@ -101,6 +99,13 @@ export default function Header() {
               {l.label}
             </HashLink>
           ))}
+
+          <Link
+            to="/about"
+            className="link-underline text-ink/80 hover:text-ink dark:text-white/80 dark:hover:text-paper"
+          >
+            {t.nav.about}
+          </Link>
 
           {/* Services dropdown */}
           <div className="group relative">
@@ -147,13 +152,6 @@ export default function Header() {
               </div>
             </div>
           </div>
-
-          <Link
-            to="/mentors"
-            className="link-underline text-ink/80 hover:text-ink dark:text-white/80 dark:hover:text-paper"
-          >
-            {t.nav.mentors}
-          </Link>
 
           <HashLink
             to="#contact"
@@ -223,6 +221,13 @@ export default function Header() {
               {l.label}
             </HashLink>
           ))}
+          <Link
+            to="/about"
+            onClick={closeMobile}
+            className="rounded-lg px-3 py-3 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5"
+          >
+            {t.nav.about}
+          </Link>
           <div className="mt-2 rounded-xl border border-ink/10 bg-ink/5 p-2 dark:border-white/10 dark:bg-white/5">
             <div className="px-3 pb-1 pt-2 text-xs uppercase tracking-widest text-ink/50 dark:text-white/50">
               {t.nav.services}
@@ -245,13 +250,6 @@ export default function Header() {
               {t.nav.educationIndividual}
             </HashLink>
           </div>
-          <Link
-            to="/mentors"
-            onClick={closeMobile}
-            className="rounded-lg px-3 py-3 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5"
-          >
-            {t.nav.mentors}
-          </Link>
           <HashLink
             to="#contact"
             onClick={closeMobile}

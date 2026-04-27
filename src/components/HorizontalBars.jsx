@@ -57,8 +57,7 @@ export default function HorizontalBars() {
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-16 lg:py-24">
       <div className="container-narrow mb-10">
-        <span className="eyebrow">//</span>
-        <h2 className="mt-3 font-display text-display font-bold">
+        <h2 className="font-display text-display font-bold">
           {t.stripes?.heading || 'What we do'}
         </h2>
       </div>

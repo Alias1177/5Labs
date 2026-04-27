@@ -5,6 +5,8 @@
  *
  * size: 'sm' | 'md' | 'lg' — высота шрифта для разных мест использования.
  */
+import { Link, useLocation } from 'react-router-dom';
+
 export default function Logo({ className = '', size = 'md' }) {
   const sizeClass = {
     sm: 'text-2xl',
@@ -12,9 +14,12 @@ export default function Logo({ className = '', size = 'md' }) {
     lg: 'text-5xl md:text-6xl',
   }[size];
 
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
-    <a
-      href="#home"
+    <Link
+      to={isHome ? '#home' : '/'}
       aria-label="5 Labs Agency"
       className={`inline-flex select-none items-baseline leading-none ${className}`}
     >
@@ -25,6 +30,6 @@ export default function Logo({ className = '', size = 'md' }) {
         <span className="text-violet-300">5</span>
         <span className="text-ink dark:text-paper">labs</span>
       </span>
-    </a>
+    </Link>
   );
 }

@@ -52,8 +52,7 @@ export default function SplineScene() {
       aria-label="3D motion scene"
     >
       <div className="container-narrow pt-20 lg:pt-28">
-        <span className="eyebrow">//</span>
-        <h2 className="mt-3 font-display text-display font-bold">
+        <h2 className="font-display text-display font-bold">
           {t.splineHeading || 'Crafted with motion'}
         </h2>
         <p className="mt-4 max-w-2xl text-muted text-lg">
