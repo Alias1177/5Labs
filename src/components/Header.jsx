@@ -73,15 +73,22 @@ export default function Header() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll when mobile menu is open.
+  // На iOS Safari простого overflow:hidden на body недостаточно — фон всё равно
+  // прокручивается. Поэтому фиксируем body через position:fixed и сохраняем
+  // текущий scrollY, чтобы вернуть пользователя на ту же позицию при закрытии.
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    if (!mobileOpen) return;
+
+    const scrollY = window.scrollY;
+    document.documentElement.classList.add('scroll-locked');
+    document.body.style.top = `-${scrollY}px`;
+
     return () => {
-      document.body.style.overflow = '';
+      document.documentElement.classList.remove('scroll-locked');
+      document.body.style.top = '';
+      // Возвращаем пользователя на ту же позицию, где он был
+      window.scrollTo(0, scrollY);
     };
   }, [mobileOpen]);
 

@@ -9,10 +9,33 @@
     scrollbar-width: none;
     /* Legacy IE/Edge */
     -ms-overflow-style: none;
+    overflow-x: hidden;
+    /* Запрещаем горизонтальный rubber-band/bounce на iOS и Android */
+    overscroll-behavior-x: none;
+    /* Разрешаем только вертикальный pan, отключаем горизонтальные жесты */
+    touch-action: pan-y;
+    width: 100%;
   }
   body {
     @apply bg-paper text-ink font-sans transition-colors duration-300;
     font-feature-settings: 'ss01', 'cv11';
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    width: 100%;
+    position: relative;
+  }
+  /* Класс, который вешаем на <html> при открытом мобильном меню — надёжный
+     лок прокрутки, в т.ч. для iOS Safari (overflow:hidden на body не помогает). */
+  html.scroll-locked,
+  html.scroll-locked body {
+    overflow: hidden !important;
+    touch-action: none !important;
+    overscroll-behavior: none !important;
+  }
+  html.scroll-locked body {
+    position: fixed;
+    inset: 0;
+    width: 100%;
   }
   /* WebKit — Chrome, Safari, Edge (Chromium) */
   html::-webkit-scrollbar,
