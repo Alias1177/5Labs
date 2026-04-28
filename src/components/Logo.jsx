@@ -5,7 +5,7 @@
  *
  * size: 'sm' | 'md' | 'lg' — высота шрифта для разных мест использования.
  */
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export default function Logo({ className = '', size = 'md' }) {
   const sizeClass = {
@@ -15,11 +15,23 @@ export default function Logo({ className = '', size = 'md' }) {
   }[size];
 
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === '/';
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  };
 
   return (
     <Link
-      to={isHome ? '#home' : '/'}
+      to="/"
+      onClick={handleClick}
       aria-label="5 Labs Agency"
       className={`inline-flex select-none items-baseline leading-none ${className}`}
     >

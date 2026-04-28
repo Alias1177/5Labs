@@ -4,6 +4,8 @@ import Footer from './components/Footer.jsx';
 import ScrollToHash from './components/ScrollToHash.jsx';
 import Home from './pages/Home.jsx';
 import AboutPage from './pages/AboutPage.jsx';
+import PartnershipPage from './pages/PartnershipPage.jsx';
+import PremiumPage from './pages/PremiumPage.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import NotFound from './pages/NotFound.jsx';
@@ -21,6 +23,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/services/partnership" element={<PartnershipPage />} />
+          <Route path="/services/premium" element={<PremiumPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route

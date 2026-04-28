@@ -73,6 +73,18 @@ export default function Header() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   const navLinks = [];
 
   const closeMobile = () => setMobileOpen(false);
@@ -118,14 +130,14 @@ export default function Header() {
             </HashLink>
             <div className="invisible absolute left-1/2 top-full -translate-x-1/2 translate-y-1 opacity-0 transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
               <div className="mt-3 w-52 overflow-hidden rounded-xl border border-ink/10 bg-paper/95 p-2 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-ink/95">
-                <HashLink to="#partnership" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-violet/15 hover:text-ink dark:text-white/80 dark:hover:text-paper">
+                <Link to="/services/partnership" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-violet/15 hover:text-ink dark:text-white/80 dark:hover:text-paper">
                   <span>{t.nav.servicesPartnership}</span>
                   <span className="h-1.5 w-1.5 rounded-full bg-violet" />
-                </HashLink>
-                <HashLink to="#premium" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-lime/20 hover:text-ink dark:text-white/80 dark:hover:text-paper">
+                </Link>
+                <Link to="/services/premium" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-lime/20 hover:text-ink dark:text-white/80 dark:hover:text-paper">
                   <span>{t.nav.servicesPremium}</span>
                   <span className="h-1.5 w-1.5 rounded-full bg-lime" />
-                </HashLink>
+                </Link>
               </div>
             </div>
           </div>
@@ -232,12 +244,12 @@ export default function Header() {
             <div className="px-3 pb-1 pt-2 text-xs uppercase tracking-widest text-ink/50 dark:text-white/50">
               {t.nav.services}
             </div>
-            <HashLink to="#partnership" onClick={closeMobile} className="block rounded-lg px-3 py-2 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5">
+            <Link to="/services/partnership" onClick={closeMobile} className="block rounded-lg px-3 py-2 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5">
               {t.nav.servicesPartnership}
-            </HashLink>
-            <HashLink to="#premium" onClick={closeMobile} className="block rounded-lg px-3 py-2 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5">
+            </Link>
+            <Link to="/services/premium" onClick={closeMobile} className="block rounded-lg px-3 py-2 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5">
               {t.nav.servicesPremium}
-            </HashLink>
+            </Link>
           </div>
           <div className="mt-2 rounded-xl border border-ink/10 bg-ink/5 p-2 dark:border-white/10 dark:bg-white/5">
             <div className="px-3 pb-1 pt-2 text-xs uppercase tracking-widest text-ink/50 dark:text-white/50">

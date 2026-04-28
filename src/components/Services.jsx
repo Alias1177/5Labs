@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
 
-function Card({ id, accent, tag, title, desc, features }) {
+function Card({ id, accent, tag, title, desc, features, href, ctaLabel }) {
   // accent: 'violet' | 'lime'
   const accentMap = {
     violet: {
@@ -9,6 +10,7 @@ function Card({ id, accent, tag, title, desc, features }) {
       chip: 'bg-violet/10 text-violet border-violet/40',
       bullet: 'text-violet',
       bg: 'bg-gradient-to-br from-violet/10 via-transparent to-transparent',
+      btn: 'bg-violet text-paper hover:bg-violet-600',
     },
     lime: {
       border: 'border-lime-500/50 dark:border-lime/40',
@@ -16,20 +18,21 @@ function Card({ id, accent, tag, title, desc, features }) {
       chip: 'bg-lime/15 text-lime-700 border-lime-500/50 dark:text-lime-400 dark:border-lime/40',
       bullet: 'text-lime-700 dark:text-lime-400',
       bg: 'bg-gradient-to-br from-lime/15 via-transparent to-transparent',
+      btn: 'bg-lime text-ink hover:bg-lime-300',
     },
   };
   const a = accentMap[accent];
   return (
     <div
       id={id}
-      className={`group relative overflow-hidden rounded-3xl border ${a.border} ${a.bg} p-8 transition hover:-translate-y-1`}
+      className={`group relative flex flex-col overflow-hidden rounded-3xl border ${a.border} ${a.bg} p-8 transition hover:-translate-y-1`}
     >
       <div
         className={`pointer-events-none absolute -top-24 -right-24 h-60 w-60 rounded-full ${a.glow} blur-3xl opacity-60 transition-opacity group-hover:opacity-100`}
       />
 
-      <div className="relative">
-        <div className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest ${a.chip}`}>
+      <div className="relative flex h-full flex-col">
+        <div className={`inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest ${a.chip}`}>
           {tag}
         </div>
 
@@ -44,6 +47,16 @@ function Card({ id, accent, tag, title, desc, features }) {
             </li>
           ))}
         </ul>
+
+        <div className="mt-auto pt-8">
+          <Link
+            to={href}
+            className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${a.btn}`}
+          >
+            {ctaLabel}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -67,6 +80,8 @@ export default function Services() {
             title={t.services.partnership.title}
             desc={t.services.partnership.desc}
             features={t.services.partnership.features}
+            href="/services/partnership"
+            ctaLabel={t.services.learnMore}
           />
           <Card
             id="premium"
@@ -75,6 +90,8 @@ export default function Services() {
             title={t.services.premium.title}
             desc={t.services.premium.desc}
             features={t.services.premium.features}
+            href="/services/premium"
+            ctaLabel={t.services.learnMore}
           />
         </div>
       </div>
