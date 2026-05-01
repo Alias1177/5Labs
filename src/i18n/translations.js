@@ -10,6 +10,7 @@ export const translations = {
       education: 'Eğitim',
       educationSeminars: 'Seminerler',
       educationIndividual: 'Bireysel',
+      educationGroup: 'Grup',
       mentors: 'Mentorlar',
       contact: 'İletişim',
     },
@@ -194,6 +195,7 @@ export const translations = {
     education: {
       eyebrow: 'Eğitim',
       title: 'Yaptığımız şeyi öğretiyoruz.',
+      allCta: 'Tüm programlar',
       seminars: {
         tag: 'Seminars',
         title: 'Seminerler ve atölyeler',
@@ -205,6 +207,296 @@ export const translations = {
         title: 'Bireysel programlar',
         desc: 'Ajans pratiğiyle kişisel mentörlük ve öğrenme yolları. Gerçek vakalarınıza odaklanıyoruz.',
         bullet: 'Uzmanla 1’e 1',
+      },
+      group: {
+        tag: 'Group',
+        title: 'Grup programları',
+        desc: 'Birlikte öğrenme, kişisel sonuç. Online ya da ofline; pratik ve geri bildirime odaklı.',
+        bullet: '5 ile 20 katılımcı',
+      },
+    },
+    educationPage: {
+      eyebrow: 'Eğitim',
+      title: 'Yaptığımız işi öğretiyoruz.',
+      subtitle:
+        'Format, program ve takvim seçin — kayıt için doğrudan mesajlaşma uygulamasından yazın. Dersleri 5 Labs uygulayıcıları veriyor.',
+      formats: {
+        cta: 'Aç',
+        seminars: {
+          tag: 'Seminerler',
+          title: 'Seminerler ve atölyeler',
+          desc: 'Ekipler ve topluluklar için kapalı eğitim formatları. Kısa derslerden birkaç günlük yoğun programlara kadar.',
+          stat: '10–200 katılımcı',
+        },
+        individual: {
+          tag: 'Bireysel',
+          title: 'Bireysel programlar',
+          desc: 'Ajans uygulayıcılarıyla kişisel mentörlük ve programlar. Gerçek vakalara odaklanır.',
+          stat: 'Uzmanla 1’e 1',
+        },
+        group: {
+          tag: 'Grup',
+          title: 'Grup programları',
+          desc: 'Birlikte öğrenme, kişisel sonuç. Online ya da ofline; pratik ve geri bildirime odaklı.',
+          stat: '5–20 katılımcı',
+        },
+      },
+      why: {
+        eyebrow: 'Neden 5 Labs',
+        title: 'Bir ajansın içinden büyüyen okul.',
+        items: [
+          {
+            title: 'Teorisyenler değil, uygulayıcılar',
+            desc: 'Müşteri prodüksiyonunu yöneten ekibin kendisi ders veriyor. Kitap özetleri yok.',
+          },
+          {
+            title: 'Sizin vakalarınız',
+            desc: 'Gerçek görevleriniz üzerinde çalışıyor, programdan hemen sonra uygulayabileceğiniz çözümler üretiyoruz.',
+          },
+          {
+            title: 'Pratik ve geri bildirim',
+            desc: 'Her ders uygulamalı, sonrasında debrief. Hızlı ilerleyiş, dolgu yok, sunum şovu yok.',
+          },
+        ],
+      },
+      bottomCta: {
+        eyebrow: 'İletişime geçin',
+        title: 'Uygun formatı bulamadınız mı?',
+        subtitle:
+          'Neye ihtiyacınız olduğunu anlatın — ekibinizin ya da kişisel hedeflerinizin etrafında bir program kuralım.',
+        button: 'Bize yazın',
+      },
+      catalog: {
+        individual: {
+          eyebrow: 'Bireysel',
+          title: 'Uzmanla 1’e 1.',
+          subtitle:
+            'Kişisel takvim, hedeflerinize odaklı. Programı seçin — takvimi sizin etrafınızda kuruyoruz.',
+        },
+        group: {
+          eyebrow: 'Grup',
+          title: 'Ekip olarak öğrenin.',
+          subtitle:
+            '5 ile 20 katılımcı. Herkes kendi sonucunu alır — program tek bir ritimde ilerler.',
+        },
+        deliveryLabel: 'Format',
+        online: 'Online',
+        offline: 'Ofline',
+        durations: { '1': '1 ay', '1.5': '1.5 ay', '2': '2 ay' },
+        tbd: 'Talep üzerine',
+        signUp: 'Kayıt ol',
+        descriptions: {
+          smmStandart: 'Sosyal medya temel kursu: içerik planı, görseller, paylaşım ritmi.',
+          smmProfessional: 'Daha derin SMM: strateji, kreatif, analitik, ajans vakaları.',
+          marketing: 'Tam pazarlama programı — stratejiden lansmana ve analitiğe.',
+          mobilography: 'Telefonla profesyonel çekim: ışık, kadraj, kurgu, presetler.',
+          meta: 'Meta Ads: kurulum, kreatif, optimizasyon ve ölçekleme.',
+          promptEngineering: 'Bir araç olarak AI: promptlar, zincirler, ajanlar — pazarlama görevleri etrafında.',
+          graphicDesign: 'Grafik tasarım temelleri: kompozisyon, tipografi, renk, kimlik.',
+          blackMagic: '5 Labs’a özgü metodoloji — ileri düzey büyüme teknikleri.',
+          blackMagicMobilography: 'Black Magic + mobilografi tek programda. Daha geniş ve daha derin.',
+        },
+      },
+      detail: {
+        topicsEyebrow: 'Program',
+        topicsTitle: 'İçinde ne var',
+        blockLabel: 'Blok',
+        lessonsLabel: 'ders',
+        examLabel: '+ sınav',
+        scheduleEyebrow: 'Ne zaman',
+        scheduleTitle: 'Takvim',
+        scheduleSubtitle: 'Gün ve saat seçin — sohbette onaylıyoruz.',
+        noSlots: 'Bu format için uygun slot yok. Bize yazın — özel zaman ayarlayalım.',
+        signupEyebrow: 'Kayıt',
+        signupTitle: 'Mesajlaşma üzerinden kayıt',
+        signupHint: 'Yukarıdan slot seçin — yöneticiye gidecek mesajı önceden dolduruyoruz.',
+        signupReady: 'Slot seçildi: {day}, {time}. Tercih ettiğiniz mesajlaşma uygulamasını açın.',
+        signupNote: 'Yönetici ile sohbeti açar — tüm ayrıntılar tek mesajda hazır.',
+        signupGreeting: 'Merhaba! Kayıt olmak istiyorum:',
+        programLabel: 'Program',
+        formatLabel: 'Format',
+        timeLabel: 'Saat',
+        days: {
+          mon: 'Pazartesi',
+          tue: 'Salı',
+          wed: 'Çarşamba',
+          thu: 'Perşembe',
+          fri: 'Cuma',
+          sat: 'Cumartesi',
+          sun: 'Pazar',
+        },
+        topics: {
+          smmStandart: {
+            lessonsCount: 8,
+            exam: true,
+            blocks: [
+              {
+                title: 'SMM temelleri',
+                desc: 'Sosyal platformların işleyişi, içerikle satışın mantığı ve hesap analizi. Hedef kitleyi, ihtiyaçlarını ve davranışını incelemek.',
+              },
+              {
+                title: 'Paketleme ve görsel',
+                desc: 'Satan profil oluşturma: düzen, yapı, görsel stil. İçerik planı ve tasarımla çalışma.',
+              },
+              {
+                title: 'İçerik ve satış',
+                desc: 'Metin yazımı, farklı post türleri, kitle ısıtma ve reklamsız satış. Hedefli reklama giriş.',
+              },
+            ],
+          },
+          smmProfessional: {
+            lessonsCount: 13,
+            exam: true,
+            blocks: [
+              {
+                title: 'SMM temelleri',
+                desc: 'Sosyal platformların işleyişi, içerikle satışın mantığı ve hesap analizi. Hedef kitleyi, ihtiyaçlarını ve davranışını incelemek.',
+              },
+              {
+                title: 'Paketleme ve görsel',
+                desc: 'Satan profil oluşturma: düzen, yapı, görsel stil. İçerik planı ve tasarımla çalışma.',
+              },
+              {
+                title: 'İçerik ve satış',
+                desc: 'Metin yazımı, farklı post türleri, kitle ısıtma ve reklamsız satış. Hedefli reklama giriş.',
+              },
+              {
+                title: 'İş ve rakip analizi',
+                desc: 'Niş ve rekabet alanının SWOT analizi.',
+              },
+              {
+                title: 'Eşsiz değer önerisi (USP)',
+                desc: 'Pazarda öne çıkaran teklifin formüle edilmesi.',
+              },
+              {
+                title: 'Müşteriyle çalışma ve brifing',
+                desc: 'Brif alma, mutabakat ve net iletişim.',
+              },
+              {
+                title: 'Marka ve konumlandırma',
+                desc: 'Markanın sesi, imajı ve müşterinin zihnindeki yeri.',
+              },
+              {
+                title: 'Pazarlama stratejisi',
+                desc: 'Gerçek bir müşteri hedefi etrafında strateji kurma.',
+              },
+            ],
+          },
+          marketing: {
+            lessonsCount: 10,
+            exam: false,
+            blocks: [
+              { title: 'Pazarlama temelleri', desc: 'Pazarlama nedir ve SMM’den farkı.' },
+              { title: 'Pazar ve rakip analizi', desc: 'SWOT analizi.' },
+              { title: 'Hedef kitle ve segmentasyon', desc: 'Kim alıyor, neden ve onlarla nasıl konuşulur.' },
+              { title: 'USP ve markalaşma', desc: 'Eşsiz değer önerisi ve marka temeli.' },
+              { title: 'Fiyatlandırma ve konumlandırma', desc: 'Fiyatı nasıl koymalı ve nişte nasıl yer almalı.' },
+              { title: 'Customer Journey Map', desc: 'İlk temastan tekrar satın almaya müşteri yolculuğu.' },
+              { title: 'Müşteri kazanım kanalları', desc: 'Trafik kaynakları ve birim ekonomileri.' },
+              { title: 'Metrikler ve analitik', desc: 'ROI, LTV, CAC ve sayılarla karar verme.' },
+              { title: 'Viralite ve kulaktan kulağa', desc: 'İnsanları markadan bahsettiren şey.' },
+              { title: 'Kriz, SERM ve AI dönüşümü', desc: 'Kriz pazarlaması, itibar yönetimi ve iş akışında AI.' },
+            ],
+          },
+          mobilography: {
+            lessonsCount: 8,
+            exam: false,
+            blocks: [
+              { title: 'Çekim temelleri ve ışık', desc: 'Ayarlar, sık yapılan hatalar ve kare kalitesi.' },
+              { title: 'Senaryo ve fikirler', desc: 'Yapı, hook’lar ve Reels türleri.' },
+              { title: 'Kurgu', desc: 'Ritim, müzik, metin ve sosyal için adaptasyon.' },
+              { title: 'Modelle çekim', desc: 'Hareket, açı ve karedeki dinamik.' },
+              { title: 'Ürün çekimi', desc: 'Kompozisyon, ışık ve ürünler için estetik.' },
+              { title: 'Konuşmalı ve satan video', desc: 'Sunuş ve izleyicinin dikkatini tutma.' },
+              { title: 'Müşteriyle çalışma', desc: 'İşi anlamak ve brife uygun içerik hazırlamak.' },
+              { title: 'Profesyonel kurgu', desc: 'Son rötuş: geçişler, renk, tempo.' },
+            ],
+          },
+          meta: {
+            lessonsCount: 6,
+            exam: false,
+            blocks: [
+              { title: 'Reklama giriş ve türleri', desc: 'Meta Ads yapısı, kampanya hedefleri ve format farkları.' },
+              { title: 'Hedef kitle ve segmentasyon', desc: 'Kitleyi nasıl tanımlamalı ve segmentlere nasıl ayırmalı.' },
+              { title: 'Kreatifler ve testler', desc: 'Görsel, metin ve hipotezlerin A/B testi.' },
+              { title: 'Bütçe ve strateji', desc: 'Günlük ve toplam bütçe, harcama optimizasyonu.' },
+              { title: 'Kurulum ve reklam yönetimi', desc: 'Canlı kampanyalarda Ads Manager pratiği.' },
+              { title: 'Portfolyo ve sonuç analizi', desc: 'Vakalar, KPI’ların incelenmesi ve işin sunumu.' },
+            ],
+          },
+          promptEngineering: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Prompt temelleri', desc: '' },
+              { title: 'Zincirler ve ajanlar', desc: '' },
+              { title: 'Pazarlamada AI', desc: '' },
+              { title: 'Otomasyonlar', desc: '' },
+            ],
+          },
+          graphicDesign: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Kompozisyon ve grid', desc: '' },
+              { title: 'Tipografi', desc: '' },
+              { title: 'Renk ve kontrast', desc: '' },
+              { title: 'Marka kimliği', desc: '' },
+            ],
+          },
+          blackMagic: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'İleri büyüme taktikleri', desc: '' },
+              { title: 'Dönüşüm zincirleri', desc: '' },
+              { title: 'Zor nişler için kreatif', desc: '' },
+              { title: '5 Labs vakaları', desc: '' },
+            ],
+          },
+          blackMagicMobilography: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Tüm Black Magic konuları', desc: '' },
+              { title: 'Tüm mobilografi konuları', desc: '' },
+              { title: 'Birleşik pratik', desc: '' },
+              { title: 'Final projesi', desc: '' },
+            ],
+          },
+        },
+      },
+      seminars: {
+        eyebrow: 'Seminerler',
+        title: 'Ekipler için kapalı formatlar.',
+        subtitle:
+          'Programı ofisinize getiriyor, kendi mekânımızda yoğun program düzenliyor ya da açık grup topluyoruz.',
+        kicker: '10 ile 200 katılımcı',
+        upcomingTitle: 'Yaklaşan tarihler',
+        seatsLabel: 'azami {n} kişi',
+        signUp: 'Kayıt:',
+        programLabel: 'Seminer',
+        dateLabel: 'Tarih',
+        formatLabel: 'Format',
+        locationLabel: 'Lokasyon',
+        months: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+        list: {
+          smmIntensive: {
+            title: 'SMM yoğun programı',
+            format: '2 günlük yoğun program',
+            location: 'İstanbul, 5 Labs ofisi',
+          },
+          mobilographyWorkshop: {
+            title: 'Mobilografi atölyesi',
+            format: '1 gün, uygulamalı',
+            location: 'İstanbul, 5 Labs stüdyosu',
+          },
+          aiMarketing: {
+            title: 'Pazarlamada AI',
+            format: '1 gün, ders + vaka',
+            location: 'Online',
+          },
+        },
       },
     },
     stats: {
@@ -240,10 +532,11 @@ export const translations = {
         'Strateji, prodüksiyon, eğitim ve ortaklıkları yöneten ekip. Her biri kendi alanında 10+ yıllık uygulama deneyimine sahip.',
       list: [
         {
-          name: 'Mentor Bir',
-          role: 'Yaratıcı Direktör',
-          photo: '/mentors/1.jpg',
-          bio: 'Marka kimliği, kampanya konsepti ve görsel dil. Büyük lansmanlara liderlik eder.',
+          name: 'Narmina',
+          role: 'Pazarlama ve Meta Ads mentörü',
+          photo: '/mentors/narmina.jpg',
+          objectPosition: '50% 22%',
+          bio: 'Pazarlama ve Meta Ads mentörüyüm. Öğrencilere pazar analizinden hedef kitlenin belirlenmesine ve gerçek müşteri getiren stratejilerin kurulmasına kadar sistemli bir yaklaşım kazandırıyorum. Bu eğitimde sadece teori değil — pazarlamacı gibi düşünmeyi, reklam yönetmeyi ve sonucu kontrol etmeyi öğreniyorsunuz.',
         },
         {
           name: 'Mentor İki',
@@ -543,6 +836,7 @@ export const translations = {
       education: 'Education',
       educationSeminars: 'Seminars',
       educationIndividual: 'Individual',
+      educationGroup: 'Group',
       mentors: 'Mentors',
       contact: 'Contact',
     },
@@ -727,6 +1021,7 @@ export const translations = {
     education: {
       eyebrow: 'Education',
       title: 'We teach what we do.',
+      allCta: 'All programs',
       seminars: {
         tag: 'Seminars',
         title: 'Seminars & workshops',
@@ -736,8 +1031,370 @@ export const translations = {
       individual: {
         tag: 'Individual',
         title: 'Individual programs',
-        desc: 'Personal mentoring and learning tracks with agency practitioners. Focused on your real cases.',
+        desc: 'Personal mentoring and programs with agency practitioners. Focused on real cases.',
         bullet: '1-on-1 with expert',
+      },
+      group: {
+        tag: 'Group',
+        title: 'Group programs',
+        desc: 'Shared learning, personal results. Online or offline, focused on practice and feedback.',
+        bullet: '5 to 20 participants',
+      },
+    },
+    educationPage: {
+      eyebrow: 'Education',
+      title: 'We teach what we do.',
+      subtitle:
+        'Pick a format, a program and a schedule — sign up directly via messenger. Taught by 5 Labs practitioners.',
+      formats: {
+        cta: 'Open',
+        seminars: {
+          tag: 'Seminars',
+          title: 'Seminars & workshops',
+          desc: 'Closed-door educational formats for teams and communities. From short talks to multi-day intensives.',
+          stat: '10–200 participants',
+        },
+        individual: {
+          tag: 'Individual',
+          title: 'Individual programs',
+          desc: 'Personal mentoring and programs with agency practitioners. Focused on real cases.',
+          stat: '1-on-1 with expert',
+        },
+        group: {
+          tag: 'Group',
+          title: 'Group programs',
+          desc: 'Shared learning, personal results. Online or offline, focused on practice and feedback.',
+          stat: '5–20 participants',
+        },
+      },
+      why: {
+        eyebrow: 'Why 5 Labs',
+        title: 'A school grown out of an agency.',
+        items: [
+          {
+            title: 'Practitioners, not theorists',
+            desc: 'Taught by the same people who run client production. No book retellings.',
+          },
+          {
+            title: 'Your cases',
+            desc: 'We work on your real tasks and ship solutions you can apply right after the program.',
+          },
+          {
+            title: 'Practice and feedback',
+            desc: 'Every session is hands-on plus a debrief. Move fast, no fluff, no slideware.',
+          },
+        ],
+      },
+      bottomCta: {
+        eyebrow: 'Get in touch',
+        title: 'Didn’t find the right format?',
+        subtitle:
+          'Tell us what you need — we’ll assemble a program around your team or personal goals.',
+        button: 'Write to us',
+      },
+      catalog: {
+        individual: {
+          eyebrow: 'Individual',
+          title: '1-on-1 with an expert.',
+          subtitle:
+            'Personal schedule, focused on your goals. Pick a program — we shape the schedule around you.',
+        },
+        group: {
+          eyebrow: 'Group',
+          title: 'Learn as a team.',
+          subtitle:
+            '5 to 20 participants. Each gets their own outcome — the program runs as one.',
+        },
+        deliveryLabel: 'Format',
+        online: 'Online',
+        offline: 'Offline',
+        durations: { '1': '1 month', '1.5': '1.5 months', '2': '2 months' },
+        tbd: 'On request',
+        signUp: 'Sign up',
+        descriptions: {
+          smmStandart: 'Foundational social media course: content plan, visuals, posting rhythm.',
+          smmProfessional: 'Deeper SMM: strategy, creative, analytics, agency case studies.',
+          marketing: 'Full marketing program — from strategy to launch and analytics.',
+          mobilography: 'Mobile-first shooting like a pro: light, framing, editing, presets.',
+          meta: 'Meta Ads: setup, creative, optimization and scaling.',
+          promptEngineering: 'AI as a tool: prompts, chains, agents — built around marketing tasks.',
+          graphicDesign: 'Graphic design basics: composition, typography, color, identity.',
+          blackMagic: '5 Labs proprietary methodology — advanced growth techniques.',
+          blackMagicMobilography: 'Black Magic + mobilography in one program. Wider and deeper.',
+        },
+      },
+      detail: {
+        topicsEyebrow: 'Curriculum',
+        topicsTitle: 'What’s inside',
+        blockLabel: 'Block',
+        lessonsLabel: 'lessons',
+        examLabel: '+ exam',
+        scheduleEyebrow: 'When',
+        scheduleTitle: 'Schedule',
+        scheduleSubtitle: 'Pick a day and time — we’ll confirm in chat.',
+        noSlots: 'No slots available for this format. Drop us a message — we’ll arrange a custom time.',
+        signupEyebrow: 'Sign up',
+        signupTitle: 'Sign up via messenger',
+        signupHint: 'Pick a slot above — we’ll prefill the message to the manager.',
+        signupReady: 'Slot picked: {day}, {time}. Open your preferred messenger.',
+        signupNote: 'Opens a chat with the manager — all details already in one message.',
+        signupGreeting: 'Hi! I’d like to sign up:',
+        programLabel: 'Program',
+        formatLabel: 'Format',
+        timeLabel: 'Time',
+        days: {
+          mon: 'Monday',
+          tue: 'Tuesday',
+          wed: 'Wednesday',
+          thu: 'Thursday',
+          fri: 'Friday',
+          sat: 'Saturday',
+          sun: 'Sunday',
+        },
+        topics: {
+          smmStandart: {
+            lessonsCount: 8,
+            exam: true,
+            blocks: [
+              {
+                title: 'SMM foundations',
+                desc: 'How social platforms work, the logic of selling through content, and account analysis. Studying the target audience, their needs and behavior.',
+              },
+              {
+                title: 'Packaging & visual',
+                desc: 'Building a profile that sells: layout, structure and visual style. Designing the content plan and working with design.',
+              },
+              {
+                title: 'Content & sales',
+                desc: 'Copywriting, different post types, audience warm-up and selling without ads. Intro to paid advertising.',
+              },
+            ],
+          },
+          smmProfessional: {
+            lessonsCount: 13,
+            exam: true,
+            blocks: [
+              {
+                title: 'SMM foundations',
+                desc: 'How social platforms work, the logic of selling through content, and account analysis. Studying the target audience, their needs and behavior.',
+              },
+              {
+                title: 'Packaging & visual',
+                desc: 'Building a profile that sells: layout, structure and visual style. Designing the content plan and working with design.',
+              },
+              {
+                title: 'Content & sales',
+                desc: 'Copywriting, different post types, audience warm-up and selling without ads. Intro to paid advertising.',
+              },
+              {
+                title: 'Business & competitor analysis',
+                desc: 'SWOT analysis of the niche and competitive field.',
+              },
+              {
+                title: 'Unique selling proposition (USP)',
+                desc: 'Crafting an offer that stands out in the market.',
+              },
+              {
+                title: 'Working with clients & briefing',
+                desc: 'Capturing the brief, alignment and clean communication.',
+              },
+              {
+                title: 'Branding & positioning',
+                desc: 'Voice, image and the brand’s place in the customer’s mind.',
+              },
+              {
+                title: 'Marketing strategy',
+                desc: 'Assembling a strategy around a real client business goal.',
+              },
+            ],
+          },
+          marketing: {
+            lessonsCount: 10,
+            exam: false,
+            blocks: [
+              {
+                title: 'Marketing fundamentals',
+                desc: 'What marketing is and how it differs from SMM.',
+              },
+              {
+                title: 'Market & competitor analysis',
+                desc: 'SWOT analysis.',
+              },
+              {
+                title: 'Target audience & segmentation',
+                desc: 'Who buys, why and how to talk to them.',
+              },
+              {
+                title: 'USP & branding',
+                desc: 'Unique selling proposition and the brand foundation.',
+              },
+              {
+                title: 'Pricing & positioning',
+                desc: 'How to set a price and own a place in the niche.',
+              },
+              {
+                title: 'Customer Journey Map',
+                desc: 'The path from first touchpoint to repeat purchase.',
+              },
+              {
+                title: 'Acquisition channels',
+                desc: 'Traffic sources and their unit economics.',
+              },
+              {
+                title: 'Metrics & analytics',
+                desc: 'ROI, LTV, CAC and decision-making by numbers.',
+              },
+              {
+                title: 'Virality & word of mouth',
+                desc: 'What makes people talk about a brand.',
+              },
+              {
+                title: 'Crisis, SERM & AI transformation',
+                desc: 'Crisis marketing, reputation management and AI in the workflow.',
+              },
+            ],
+          },
+          mobilography: {
+            lessonsCount: 8,
+            exam: false,
+            blocks: [
+              {
+                title: 'Shooting basics & light',
+                desc: 'Settings, common mistakes and frame quality.',
+              },
+              {
+                title: 'Script & ideas',
+                desc: 'Structure, hooks and types of Reels.',
+              },
+              {
+                title: 'Editing',
+                desc: 'Rhythm, music, text and adaptation for social.',
+              },
+              {
+                title: 'Shooting with a model',
+                desc: 'Movement, angles and dynamics in frame.',
+              },
+              {
+                title: 'Product photography',
+                desc: 'Composition, light and aesthetics for goods.',
+              },
+              {
+                title: 'Talking & selling video',
+                desc: 'Delivery and holding the viewer’s attention.',
+              },
+              {
+                title: 'Working with clients',
+                desc: 'Understanding the business and preparing content for the brief.',
+              },
+              {
+                title: 'Professional editing',
+                desc: 'Final polish: transitions, color, pacing.',
+              },
+            ],
+          },
+          meta: {
+            lessonsCount: 6,
+            exam: false,
+            blocks: [
+              {
+                title: 'Intro to ads & their types',
+                desc: 'Meta Ads structure, campaign goals and format differences.',
+              },
+              {
+                title: 'Target audience & segmentation',
+                desc: 'How to describe an audience and split it into segments.',
+              },
+              {
+                title: 'Creatives & testing',
+                desc: 'Visuals, copy and A/B testing of hypotheses.',
+              },
+              {
+                title: 'Budget & strategy',
+                desc: 'Daily and lifetime budgets, spend optimization.',
+              },
+              {
+                title: 'Setup & ad management',
+                desc: 'Hands-on practice in Ads Manager on live campaigns.',
+              },
+              {
+                title: 'Portfolio & results analysis',
+                desc: 'Case studies, KPI breakdowns and packaging the work.',
+              },
+            ],
+          },
+          promptEngineering: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Prompt basics', desc: '' },
+              { title: 'Chains and agents', desc: '' },
+              { title: 'AI in marketing', desc: '' },
+              { title: 'Automations', desc: '' },
+            ],
+          },
+          graphicDesign: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Composition & grids', desc: '' },
+              { title: 'Typography', desc: '' },
+              { title: 'Color & contrast', desc: '' },
+              { title: 'Brand identity', desc: '' },
+            ],
+          },
+          blackMagic: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Advanced growth tactics', desc: '' },
+              { title: 'Conversion loops', desc: '' },
+              { title: 'Creative for hard niches', desc: '' },
+              { title: '5 Labs case studies', desc: '' },
+            ],
+          },
+          blackMagicMobilography: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'All Black Magic topics', desc: '' },
+              { title: 'All mobilography topics', desc: '' },
+              { title: 'Combined practice', desc: '' },
+              { title: 'Final project', desc: '' },
+            ],
+          },
+        },
+      },
+      seminars: {
+        eyebrow: 'Seminars',
+        title: 'Closed formats for teams.',
+        subtitle:
+          'We bring the program to your office, run an intensive at our venue or assemble an open group.',
+        kicker: '10 to 200 participants',
+        upcomingTitle: 'Upcoming dates',
+        seatsLabel: 'up to {n} seats',
+        signUp: 'Sign up:',
+        programLabel: 'Seminar',
+        dateLabel: 'Date',
+        formatLabel: 'Format',
+        locationLabel: 'Location',
+        months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+        list: {
+          smmIntensive: {
+            title: 'SMM intensive',
+            format: '2-day intensive',
+            location: 'Istanbul, 5 Labs office',
+          },
+          mobilographyWorkshop: {
+            title: 'Mobilography workshop',
+            format: '1 day, hands-on',
+            location: 'Istanbul, 5 Labs studio',
+          },
+          aiMarketing: {
+            title: 'AI in marketing',
+            format: '1 day, lecture + cases',
+            location: 'Online',
+          },
+        },
       },
     },
     stats: {
@@ -773,10 +1430,11 @@ export const translations = {
         'The people running strategy, production, education and partnerships — each with 10+ years of hands-on practice.',
       list: [
         {
-          name: 'Mentor One',
-          role: 'Creative Director',
-          photo: '/mentors/1.jpg',
-          bio: 'Brand identity, campaign concept and visual language. Leads the biggest launches.',
+          name: 'Narmina',
+          role: 'Marketing & Meta Ads mentor',
+          photo: '/mentors/narmina.jpg',
+          objectPosition: '50% 22%',
+          bio: 'Mentor in Marketing and Meta Ads. I help students build a structured approach to promotion — from market and audience analysis to creating strategies that actually generate clients. This is not just theory — you’ll learn how to think like a marketer, launch ads, and control results.',
         },
         {
           name: 'Mentor Two',
@@ -1076,6 +1734,7 @@ export const translations = {
       education: 'Обучение',
       educationSeminars: 'Семинары',
       educationIndividual: 'Индивидуально',
+      educationGroup: 'Группы',
       mentors: 'Менторы',
       contact: 'Контакты',
     },
@@ -1260,6 +1919,7 @@ export const translations = {
     education: {
       eyebrow: 'Обучение',
       title: 'Учим тому, что делаем сами.',
+      allCta: 'Все программы',
       seminars: {
         tag: 'Seminars',
         title: 'Семинары и воркшопы',
@@ -1269,8 +1929,370 @@ export const translations = {
       individual: {
         tag: 'Individual',
         title: 'Индивидуальные программы',
-        desc: 'Персональный менторинг и обучающие треки с практиками агентства. Фокус на ваших реальных кейсах.',
+        desc: 'Персональный менторинг и обучающие программы с практиками агентства. Фокус на реальных кейсах.',
         bullet: '1-на-1 с экспертом',
+      },
+      group: {
+        tag: 'Group',
+        title: 'Групповые программы',
+        desc: 'Общее обучение, личный результат. Онлайн или офлайн, фокус на практику и обратную связь.',
+        bullet: 'От 5 до 20 участников',
+      },
+    },
+    educationPage: {
+      eyebrow: 'Образование',
+      title: 'Учим тому, что делаем сами.',
+      subtitle:
+        'Выбирайте формат, программу и удобный график — записывайтесь напрямую в мессенджер. Ведут практики 5 Labs.',
+      formats: {
+        cta: 'Перейти',
+        seminars: {
+          tag: 'Семинары',
+          title: 'Семинары и воркшопы',
+          desc: 'Закрытые образовательные форматы для команд и сообществ. От коротких лекций до интенсивов на несколько дней.',
+          stat: '10–200 участников',
+        },
+        individual: {
+          tag: 'Индивидуально',
+          title: 'Индивидуальные программы',
+          desc: 'Персональный менторинг и обучающие программы с практиками агентства. Фокус на реальных кейсах.',
+          stat: '1-на-1 с экспертом',
+        },
+        group: {
+          tag: 'Группы',
+          title: 'Групповые программы',
+          desc: 'Общее обучение, личный результат. Онлайн или офлайн, фокус на практику и обратную связь.',
+          stat: '5–20 участников',
+        },
+      },
+      why: {
+        eyebrow: 'Почему 5 Labs',
+        title: 'Школа, выросшая из агентства.',
+        items: [
+          {
+            title: 'Практики, не теоретики',
+            desc: 'Преподают те же люди, что ведут продакшн в агентстве. Никаких пересказов из книг.',
+          },
+          {
+            title: 'Ваши кейсы',
+            desc: 'Разбираем ваши задачи и приносим решения, которые применимы сразу после программы.',
+          },
+          {
+            title: 'Практика и обратная связь',
+            desc: 'Каждое занятие — практика плюс разбор. Двигаетесь быстро, без воды и презентаций.',
+          },
+        ],
+      },
+      bottomCta: {
+        eyebrow: 'Связаться',
+        title: 'Не нашли подходящий формат?',
+        subtitle:
+          'Расскажите, что нужно — соберём программу под вашу команду или личные цели.',
+        button: 'Написать нам',
+      },
+      catalog: {
+        individual: {
+          eyebrow: 'Индивидуально',
+          title: '1-на-1 с экспертом.',
+          subtitle:
+            'Персональный график, фокус на ваших целях. Выбирайте программу — расписание подстроим под вас.',
+        },
+        group: {
+          eyebrow: 'Группы',
+          title: 'Учитесь в команде.',
+          subtitle:
+            'От 5 до 20 участников. Каждый получает свой результат — программа едина.',
+        },
+        deliveryLabel: 'Формат',
+        online: 'Онлайн',
+        offline: 'Офлайн',
+        durations: { '1': '1 месяц', '1.5': '1.5 месяца', '2': '2 месяца' },
+        tbd: 'По запросу',
+        signUp: 'Записаться',
+        descriptions: {
+          smmStandart: 'Базовый курс ведения соцсетей: контент-план, визуал, ритм публикаций.',
+          smmProfessional: 'Глубже в SMM: стратегия, креатив, аналитика, кейсы из агентства.',
+          marketing: 'Полная программа маркетинга — от стратегии до запуска и аналитики.',
+          mobilography: 'Снимаем на телефон как профи: свет, кадр, монтаж, пресеты.',
+          meta: 'Реклама в Meta Ads: настройка, креатив, оптимизация и масштабирование.',
+          promptEngineering: 'AI как инструмент: промты, цепочки, агенты — под задачи маркетинга.',
+          graphicDesign: 'Базовая графика: композиция, типографика, цвет, фирстиль.',
+          blackMagic: 'Авторская методика 5 Labs — продвинутые техники продвижения.',
+          blackMagicMobilography: 'Black Magic + мобилография в одной программе. Глубже и шире.',
+        },
+      },
+      detail: {
+        topicsEyebrow: 'Программа',
+        topicsTitle: 'Что внутри',
+        blockLabel: 'Блок',
+        lessonsLabel: 'занятий',
+        examLabel: '+ экзамен',
+        scheduleEyebrow: 'Когда',
+        scheduleTitle: 'Расписание',
+        scheduleSubtitle: 'Выберите день и время — мы подтвердим в чате.',
+        noSlots: 'Нет доступных слотов в этом формате. Напишите в мессенджер — подберём индивидуальное время.',
+        signupEyebrow: 'Записаться',
+        signupTitle: 'Запись через мессенджер',
+        signupHint: 'Выберите слот выше — мы предзаполним сообщение менеджеру.',
+        signupReady: 'Слот выбран: {day}, {time}. Откройте удобный мессенджер.',
+        signupNote: 'Откроется чат с менеджером — все детали уже в одном сообщении.',
+        signupGreeting: 'Здравствуйте! Хочу записаться:',
+        programLabel: 'Программа',
+        formatLabel: 'Формат',
+        timeLabel: 'Время',
+        days: {
+          mon: 'Понедельник',
+          tue: 'Вторник',
+          wed: 'Среда',
+          thu: 'Четверг',
+          fri: 'Пятница',
+          sat: 'Суббота',
+          sun: 'Воскресенье',
+        },
+        topics: {
+          smmStandart: {
+            lessonsCount: 8,
+            exam: true,
+            blocks: [
+              {
+                title: 'Основа SMM',
+                desc: 'Понимание работы соцсетей, логики продаж через контент и анализа аккаунтов. Изучение целевой аудитории, её потребностей и поведения.',
+              },
+              {
+                title: 'Упаковка и визуал',
+                desc: 'Создание продающего профиля: оформление, структура, визуальный стиль. Разработка контент-плана и работа с дизайном.',
+              },
+              {
+                title: 'Контент и продажи',
+                desc: 'Копирайтинг, разные типы постов, прогрев аудитории и продажи без рекламы. Введение в таргетированную рекламу.',
+              },
+            ],
+          },
+          smmProfessional: {
+            lessonsCount: 13,
+            exam: true,
+            blocks: [
+              {
+                title: 'Основа SMM',
+                desc: 'Понимание работы соцсетей, логики продаж через контент и анализа аккаунтов. Изучение целевой аудитории, её потребностей и поведения.',
+              },
+              {
+                title: 'Упаковка и визуал',
+                desc: 'Создание продающего профиля: оформление, структура, визуальный стиль. Разработка контент-плана и работа с дизайном.',
+              },
+              {
+                title: 'Контент и продажи',
+                desc: 'Копирайтинг, разные типы постов, прогрев аудитории и продажи без рекламы. Введение в таргетированную рекламу.',
+              },
+              {
+                title: 'Анализ бизнеса и конкурентов',
+                desc: 'SWOT-анализ ниши и конкурентного поля.',
+              },
+              {
+                title: 'Уникальное предложение (УТП)',
+                desc: 'Формирование оффера, который выделяет на фоне рынка.',
+              },
+              {
+                title: 'Работа с клиентами и брифинг',
+                desc: 'Сбор задачи, согласования и грамотная коммуникация.',
+              },
+              {
+                title: 'Брендинг и позиционирование',
+                desc: 'Голос, образ и место бренда в голове клиента.',
+              },
+              {
+                title: 'Маркетинг-стратегия',
+                desc: 'Сборка стратегии под бизнес-задачу заказчика.',
+              },
+            ],
+          },
+          marketing: {
+            lessonsCount: 10,
+            exam: false,
+            blocks: [
+              {
+                title: 'Основы маркетинга',
+                desc: 'Маркетинг и его отличие от SMM.',
+              },
+              {
+                title: 'Анализ рынка и конкурентов',
+                desc: 'SWOT-анализ.',
+              },
+              {
+                title: 'Целевая аудитория и сегментация',
+                desc: 'Кто покупает, почему и как с ними говорить.',
+              },
+              {
+                title: 'USP и брендинг',
+                desc: 'Уникальное торговое предложение и фундамент бренда.',
+              },
+              {
+                title: 'Ценообразование и позиционирование',
+                desc: 'Как поставить цену и занять место в нише.',
+              },
+              {
+                title: 'Customer Journey Map',
+                desc: 'Путь клиента от первого касания до повторной покупки.',
+              },
+              {
+                title: 'Каналы привлечения клиентов',
+                desc: 'Разбор источников трафика и их экономики.',
+              },
+              {
+                title: 'Метрики и аналитика',
+                desc: 'ROI, LTV, CAC и принятие решений по цифрам.',
+              },
+              {
+                title: 'Вирусный эффект и сарафанное радио',
+                desc: 'Что заставляет о бренде говорить.',
+              },
+              {
+                title: 'Кризис, SERM и AI-трансформация',
+                desc: 'Антикризисный маркетинг, управление репутацией и AI в работе.',
+              },
+            ],
+          },
+          mobilography: {
+            lessonsCount: 8,
+            exam: false,
+            blocks: [
+              {
+                title: 'Основы съёмки и работа со светом',
+                desc: 'Настройки, частые ошибки и качество кадра.',
+              },
+              {
+                title: 'Сценарий и идеи',
+                desc: 'Структура, хуки, виды Reels.',
+              },
+              {
+                title: 'Монтаж',
+                desc: 'Ритм, музыка, текст, адаптация под соцсети.',
+              },
+              {
+                title: 'Съёмка с моделью',
+                desc: 'Движение, ракурсы и динамика в кадре.',
+              },
+              {
+                title: 'Предметная съёмка',
+                desc: 'Композиция, свет и эстетика для товаров.',
+              },
+              {
+                title: 'Разговорные и продающие видео',
+                desc: 'Подача и удержание внимания зрителя.',
+              },
+              {
+                title: 'Работа с клиентом',
+                desc: 'Понимание бизнеса и подготовка контента под задачу.',
+              },
+              {
+                title: 'Профессиональный монтаж',
+                desc: 'Финальный уровень: переходы, цвет, темп.',
+              },
+            ],
+          },
+          meta: {
+            lessonsCount: 6,
+            exam: false,
+            blocks: [
+              {
+                title: 'Введение в рекламу и её виды',
+                desc: 'Структура Meta Ads, цели рекламы, отличия форматов.',
+              },
+              {
+                title: 'Целевая аудитория и сегментация',
+                desc: 'Как точно описать ЦА и разрезать её на сегменты.',
+              },
+              {
+                title: 'Креативы и тесты',
+                desc: 'Визуал, тексты и A/B-тестирование гипотез.',
+              },
+              {
+                title: 'Бюджет и стратегия',
+                desc: 'Дневной и общий бюджет, оптимизация расходов.',
+              },
+              {
+                title: 'Настройка и управление рекламой',
+                desc: 'Практика в Ads Manager на реальных кампаниях.',
+              },
+              {
+                title: 'Портфолио и анализ результатов',
+                desc: 'Кейсы, разбор показателей и оформление работ.',
+              },
+            ],
+          },
+          promptEngineering: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Базовые промты', desc: '' },
+              { title: 'Цепочки и агенты', desc: '' },
+              { title: 'AI в маркетинге', desc: '' },
+              { title: 'Автоматизации', desc: '' },
+            ],
+          },
+          graphicDesign: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Композиция и сетки', desc: '' },
+              { title: 'Типографика', desc: '' },
+              { title: 'Цвет и контраст', desc: '' },
+              { title: 'Фирменный стиль', desc: '' },
+            ],
+          },
+          blackMagic: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Продвинутые техники продвижения', desc: '' },
+              { title: 'Конверсионные связки', desc: '' },
+              { title: 'Креатив на сложных нишах', desc: '' },
+              { title: 'Кейсы 5 Labs', desc: '' },
+            ],
+          },
+          blackMagicMobilography: {
+            lessonsCount: null,
+            exam: false,
+            blocks: [
+              { title: 'Все темы Black Magic', desc: '' },
+              { title: 'Все темы мобилографии', desc: '' },
+              { title: 'Совмещённая практика', desc: '' },
+              { title: 'Финальный проект', desc: '' },
+            ],
+          },
+        },
+      },
+      seminars: {
+        eyebrow: 'Семинары',
+        title: 'Закрытые форматы для команд.',
+        subtitle:
+          'Привозим программу к вам в офис, проводим интенсив на нашей площадке или собираем сборную группу.',
+        kicker: 'От 10 до 200 участников',
+        upcomingTitle: 'Ближайшие даты',
+        seatsLabel: 'до {n} мест',
+        signUp: 'Записаться:',
+        programLabel: 'Семинар',
+        dateLabel: 'Дата',
+        formatLabel: 'Формат',
+        locationLabel: 'Локация',
+        months: ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+        list: {
+          smmIntensive: {
+            title: 'SMM-интенсив',
+            format: '2-дневный интенсив',
+            location: 'Стамбул, офис 5 Labs',
+          },
+          mobilographyWorkshop: {
+            title: 'Мобилография: воркшоп',
+            format: '1 день, практика',
+            location: 'Стамбул, студия 5 Labs',
+          },
+          aiMarketing: {
+            title: 'AI в маркетинге',
+            format: '1 день, лекция + кейсы',
+            location: 'Онлайн',
+          },
+        },
       },
     },
     stats: {
@@ -1306,10 +2328,11 @@ export const translations = {
         'Люди, которые ведут стратегию, продакшн, обучение и партнёрства. У каждого 10+ лет практики в своём направлении.',
       list: [
         {
-          name: 'Ментор Один',
-          role: 'Креативный директор',
-          photo: '/mentors/1.jpg',
-          bio: 'Айдентика, концепция кампаний и визуальный язык. Ведёт крупные лонч-проекты.',
+          name: 'Нармина',
+          role: 'Ментор по маркетингу и Meta Ads',
+          photo: '/mentors/narmina.jpg',
+          objectPosition: '50% 22%',
+          bio: 'Ментор по маркетингу и Meta Ads. Помогаю студентам выстраивать системный подход к продвижению: от анализа рынка и целевой аудитории до создания стратегий, которые реально приносят клиентов. На обучении вы не просто изучаете теорию — вы учитесь думать как маркетолог, запускать рекламу и управлять результатом.',
         },
         {
           name: 'Ментор Два',

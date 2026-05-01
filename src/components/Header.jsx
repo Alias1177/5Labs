@@ -151,23 +151,27 @@ export default function Header() {
 
           {/* Education dropdown */}
           <div className="group relative">
-            <HashLink
-              to="#education"
+            <Link
+              to="/education"
               className="flex items-center gap-1.5 text-ink/80 hover:text-ink dark:text-white/80 dark:hover:text-paper"
             >
               {t.nav.education}
               <ChevronDown />
-            </HashLink>
+            </Link>
             <div className="invisible absolute left-1/2 top-full -translate-x-1/2 translate-y-1 opacity-0 transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              <div className="mt-3 w-52 overflow-hidden rounded-xl border border-ink/10 bg-paper/95 p-2 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-ink/95">
-                <HashLink to="#seminars" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-violet/15 hover:text-ink dark:text-white/80 dark:hover:text-paper">
+              <div className="mt-3 w-56 overflow-hidden rounded-xl border border-ink/10 bg-paper/95 p-2 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-ink/95">
+                <Link to="/education/seminars" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-violet/15 hover:text-ink dark:text-white/80 dark:hover:text-paper">
                   <span>{t.nav.educationSeminars}</span>
                   <span className="h-1.5 w-1.5 rounded-full bg-violet" />
-                </HashLink>
-                <HashLink to="#individual" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-lime/20 hover:text-ink dark:text-white/80 dark:hover:text-paper">
+                </Link>
+                <Link to="/education/individual" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-lime/20 hover:text-ink dark:text-white/80 dark:hover:text-paper">
                   <span>{t.nav.educationIndividual}</span>
                   <span className="h-1.5 w-1.5 rounded-full bg-lime" />
-                </HashLink>
+                </Link>
+                <Link to="/education/group" className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-ink/10 hover:text-ink dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-paper">
+                  <span>{t.nav.educationGroup}</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-ink dark:bg-paper" />
+                </Link>
               </div>
             </div>
           </div>
@@ -225,11 +229,13 @@ export default function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`lg:hidden overflow-hidden border-t border-ink/5 bg-paper/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 dark:border-white/5 dark:bg-ink/95 ${
-          mobileOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'
+        className={`lg:hidden border-t border-ink/5 bg-paper transition-[height,opacity] duration-300 dark:border-white/5 dark:bg-ink ${
+          mobileOpen
+            ? 'h-[calc(100dvh-4rem)] opacity-100 overflow-y-auto overscroll-contain'
+            : 'h-0 opacity-0 overflow-hidden'
         }`}
       >
-        <div className="container-narrow flex flex-col gap-1 py-6 text-base">
+        <div className="container-narrow flex min-h-full flex-col gap-1 pt-8 pb-[max(2rem,env(safe-area-inset-bottom))] text-base">
           {navLinks.map((l) => (
             <HashLink
               key={l.href}
@@ -259,15 +265,22 @@ export default function Header() {
             </Link>
           </div>
           <div className="mt-2 rounded-xl border border-ink/10 bg-ink/5 p-2 dark:border-white/10 dark:bg-white/5">
-            <div className="px-3 pb-1 pt-2 text-xs uppercase tracking-widest text-ink/50 dark:text-white/50">
+            <Link
+              to="/education"
+              onClick={closeMobile}
+              className="block px-3 pb-1 pt-2 text-xs uppercase tracking-widest text-ink/50 hover:text-ink dark:text-white/50 dark:hover:text-paper"
+            >
               {t.nav.education}
-            </div>
-            <HashLink to="#seminars" onClick={closeMobile} className="block rounded-lg px-3 py-2 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5">
+            </Link>
+            <Link to="/education/seminars" onClick={closeMobile} className="block rounded-lg px-3 py-2 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5">
               {t.nav.educationSeminars}
-            </HashLink>
-            <HashLink to="#individual" onClick={closeMobile} className="block rounded-lg px-3 py-2 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5">
+            </Link>
+            <Link to="/education/individual" onClick={closeMobile} className="block rounded-lg px-3 py-2 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5">
               {t.nav.educationIndividual}
-            </HashLink>
+            </Link>
+            <Link to="/education/group" onClick={closeMobile} className="block rounded-lg px-3 py-2 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5">
+              {t.nav.educationGroup}
+            </Link>
           </div>
           <HashLink
             to="#contact"

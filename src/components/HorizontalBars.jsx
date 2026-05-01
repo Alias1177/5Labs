@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useI18n } from '../i18n/I18nContext.jsx';
 
 /**
@@ -6,34 +6,22 @@ import { useI18n } from '../i18n/I18nContext.jsx';
  * На каждую полосу — большой заголовок (Marketing, Videography и т.д.).
  * Полосы «выезжают» с чередующихся сторон (слева/справа) по мере скролла
  * через эту секцию. Каждая со своим стаггер-задержкой для эффекта волны.
+ *
+ * ВАЖНО про производительность:
+ *  - НЕ дёргаем React state на скролле (иначе на телефоне жуткие лаги:
+ *    каждый scroll-эвент → setState → ре-рендер всего дерева секции).
+ *  - Считаем прогресс в обычной переменной, обновляем стиль элементов
+ *    напрямую через ref-ы. React в этом не участвует, поэтому скролл
+ *    остаётся 60fps.
+ *  - Дроссируем через requestAnimationFrame: даже если scroll-эвенты
+ *    приходят пачкой, расчёт делается максимум раз за кадр.
+ *  - Ставим also `prefers-reduced-motion` — у кого выключены анимации,
+ *    показываем полосы сразу на месте без анимации.
  */
 export default function HorizontalBars() {
   const { t } = useI18n();
   const sectionRef = useRef(null);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const el = sectionRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      // 0 — секция только что снизу появилась, 1 — полностью проехала верхнюю кромку
-      const total = rect.height + vh;
-      const passed = vh - rect.top;
-      const p = Math.max(0, Math.min(1, passed / total));
-      setProgress(p);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
-  }, []);
-
-  const labels = t.stripes?.items || ['Marketing', 'Videography', 'Branding', 'Strategy', 'Education'];
+  const barsRef = useRef([]);
 
   // Стиль полосы: цвет + направление въезда.
   // type: 'violet' | 'lime' | 'inverse'
@@ -54,6 +42,67 @@ export default function HorizontalBars() {
     inverse: 'bg-ink text-paper dark:bg-paper dark:text-ink',
   };
 
+  const labels = t.stripes?.items || ['Marketing', 'Videography', 'Branding', 'Strategy', 'Education'];
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // Если у пользователя выключены анимации — ставим полосы на 0% сразу
+    // и не подписываемся на скролл вообще.
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      barsRef.current.forEach((el) => {
+        if (el) el.style.transform = 'translate3d(0,0,0)';
+      });
+      return;
+    }
+
+    let rafId = 0;
+    let queued = false;
+
+    const compute = () => {
+      queued = false;
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const total = rect.height + vh;
+      const passed = vh - rect.top;
+      const progress = Math.max(0, Math.min(1, passed / total));
+
+      const step = 0.12;
+      const bars = barsRef.current;
+      for (let i = 0; i < bars.length; i++) {
+        const el = bars[i];
+        if (!el) continue;
+        const style = styles[i % styles.length];
+        const denom = 1 - i * step || 1;
+        const local = Math.max(0, Math.min(1, (progress - i * step) / denom));
+        const eased = 1 - Math.pow(1 - local, 3);
+        const offset = (1 - eased) * 110;
+        const tx = style.from === 'left' ? -offset : offset;
+        el.style.transform = `translate3d(${tx}%, 0, 0)`;
+      }
+    };
+
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      rafId = requestAnimationFrame(compute);
+    };
+
+    // Первичный расчёт
+    compute();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+    // styles — стабильный массив-литерал, ESLint доволен; меняется только labels.length
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [labels.length]);
+
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-16 lg:py-24">
       <div className="container-narrow mb-10">
@@ -65,22 +114,19 @@ export default function HorizontalBars() {
       <div className="flex flex-col gap-3 md:gap-4">
         {labels.map((label, i) => {
           const style = styles[i % styles.length];
-          // Каждая полоса стартует со своей задержкой.
-          // step — сколько «скролла» между стартами соседних полос.
-          const step = 0.12;
-          const local = Math.max(0, Math.min(1, (progress - i * step) / (1 - i * step || 1)));
-          // Easing (easeOutCubic) для плавности
-          const eased = 1 - Math.pow(1 - local, 3);
-          const offset = (1 - eased) * 110; // 110% — чтобы гарантированно уезжала за край
-          const translateX = style.from === 'left' ? -offset : offset;
-
+          // Стартовое смещение, чтобы до первого расчёта полосы были за краем
+          // (а не вспышкой появлялись на месте).
+          const initialOffset = style.from === 'left' ? -110 : 110;
           return (
             <div
               key={i}
+              ref={(el) => (barsRef.current[i] = el)}
               className={`relative w-full ${classByType[style.type]}`}
               style={{
-                transform: `translate3d(${translateX}%, 0, 0)`,
+                transform: `translate3d(${initialOffset}%, 0, 0)`,
                 willChange: 'transform',
+                // На iOS-Safari это даёт более плавный композитинг
+                backfaceVisibility: 'hidden',
               }}
             >
               <div

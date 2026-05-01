@@ -6,6 +6,10 @@ import Home from './pages/Home.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import PartnershipPage from './pages/PartnershipPage.jsx';
 import PremiumPage from './pages/PremiumPage.jsx';
+import EducationPage from './pages/EducationPage.jsx';
+import EducationPrograms from './pages/EducationPrograms.jsx';
+import EducationProgram from './pages/EducationProgram.jsx';
+import EducationSeminars from './pages/EducationSeminars.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import NotFound from './pages/NotFound.jsx';
@@ -25,6 +29,11 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services/partnership" element={<PartnershipPage />} />
           <Route path="/services/premium" element={<PremiumPage />} />
+          <Route path="/education" element={<EducationPage />} />
+          <Route path="/education/seminars" element={<EducationSeminars />} />
+          <Route path="/education/individual" element={<EducationPrograms format="individual" />} />
+          <Route path="/education/group" element={<EducationPrograms format="group" />} />
+          <Route path="/education/programs/:slug" element={<EducationProgram />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route

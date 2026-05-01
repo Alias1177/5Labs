@@ -16,7 +16,7 @@ function getInitials(name = '') {
  * photo — относительный путь из public/, например '/mentors/1.jpg'.
  * Если изображение не загружается (404 / пусто) — красиво падает в градиент+инициалы.
  */
-function Avatar({ photo, name }) {
+function Avatar({ photo, name, objectPosition }) {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(photo) && !failed;
 
@@ -29,6 +29,9 @@ function Avatar({ photo, name }) {
           loading="lazy"
           onError={() => setFailed(true)}
           className="h-full w-full object-cover"
+          // objectPosition смещает фокус кропа — нужен для портретов,
+          // где лицо не строго по центру кадра.
+          style={objectPosition ? { objectPosition } : undefined}
         />
       ) : (
         <div className="flex h-full w-full items-center justify-center">
@@ -70,7 +73,7 @@ export default function Mentors() {
           {m.list.map((person, idx) => (
             <Reveal key={idx} as="article" delay={idx * 120} className="group flex flex-col items-center text-center">
               <div className="relative w-40 sm:w-48 lg:w-52">
-                <Avatar photo={person.photo} name={person.name} />
+                <Avatar photo={person.photo} name={person.name} objectPosition={person.objectPosition} />
               </div>
               <h3 className="mt-6 font-display text-xl font-semibold lg:text-2xl">
                 {person.name}

@@ -9,7 +9,7 @@ function getInitials(name = '') {
   return parts.map((p) => p.charAt(0).toUpperCase()).join('');
 }
 
-function Avatar({ photo, name }) {
+function Avatar({ photo, name, objectPosition }) {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(photo) && !failed;
 
@@ -22,6 +22,9 @@ function Avatar({ photo, name }) {
           loading="lazy"
           onError={() => setFailed(true)}
           className="h-full w-full object-cover"
+          // objectPosition позволяет смещать фокус кропа: '50% 20%' оставит лицо
+          // в кадре на портретах, где голова не по центру.
+          style={objectPosition ? { objectPosition } : undefined}
         />
       ) : (
         <div className="flex h-full w-full items-center justify-center">
@@ -61,7 +64,7 @@ export default function AboutPage() {
             {m.list.map((person, idx) => (
               <Reveal key={idx} as="article" delay={idx * 120} className="group flex flex-col items-center text-center">
                 <div className="relative w-40 sm:w-48 lg:w-52">
-                  <Avatar photo={person.photo} name={person.name} />
+                  <Avatar photo={person.photo} name={person.name} objectPosition={person.objectPosition} />
                 </div>
                 <h3 className="mt-6 font-display text-xl font-semibold lg:text-2xl">
                   {person.name}
