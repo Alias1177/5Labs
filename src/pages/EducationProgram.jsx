@@ -1,8 +1,11 @@
 import { useMemo, useState } from 'react';
-import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import Reveal from '../components/Reveal.jsx';
 import { SCHEDULE, buildContactLink, getProgram } from '../data/educationPrograms.js';
+import { useAuth } from '../auth/AuthContext.jsx';
+import { useEnrollments } from '../data/useEnrollments.js';
+import MentorContactModal from '../components/MentorContactModal.jsx';
 
 /**
  * Страница одной программы. Сюда приходят с каталога:
@@ -28,8 +31,12 @@ export default function EducationProgram() {
   const { slug } = useParams();
   const { t } = useI18n();
   const location = useLocation();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const { isEnrolled, enroll } = useEnrollments();
   const program = getProgram(slug);
   const e = t.educationPage;
+  const enrollT = t.enrollment;
 
   // Запрашиваем initial-настройки из URL. useMemo чтобы реакт не пересчитывал
   // при каждом ре-рендере (search не меняется без явной навигации).
@@ -46,6 +53,10 @@ export default function EducationProgram() {
   const [format, setFormat] = useState(init.format);
   const [delivery, setDelivery] = useState(init.delivery);
   const [picked, setPicked] = useState(null); // { dayKey, time } | null
+  // { open: boolean, isNew: boolean } — состояние модалки контактов.
+  // isNew=true показывается сразу после записи (свежая регистрация),
+  // isNew=false — когда пользователь повторно открывает модалку.
+  const [contactModal, setContactModal] = useState({ open: false, isNew: false });
 
   // Если программа не найдена — отправляем на хаб образования.
   // Делаем это после хуков, чтобы не нарушить порядок.
@@ -89,6 +100,14 @@ export default function EducationProgram() {
     return lines.join('\n');
   }
 
+  // Сообщение для программ со статусом «Coming soon» — пользователь
+  // оставляет заявку в лист ожидания, без выбора слотов и формата.
+  function buildComingSoonMessage() {
+    const greeting = (e.detail.comingSoonGreeting || '')
+      .replace('{program}', program.name);
+    return greeting || `${e.detail.signupGreeting} ${program.name}`;
+  }
+
   return (
     <>
       {/* Hero */}
@@ -118,21 +137,32 @@ export default function EducationProgram() {
               {program.name}
             </h1>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-ink/5 px-4 py-2 text-sm dark:border-white/15 dark:bg-white/5">
-                <span className="h-1.5 w-1.5 rounded-full bg-violet dark:bg-lime" />
-                {fmtDuration(program.duration)}
-              </span>
-              {lessonsPill() && (
+              {program.comingSoon ? (
+                <span className="inline-flex items-center gap-2 rounded-full border border-violet/40 bg-violet/10 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-violet dark:border-lime/40 dark:bg-lime/10 dark:text-lime">
+                  <span className="h-1.5 w-1.5 rounded-full bg-violet dark:bg-lime animate-pulse" />
+                  {e.catalog.comingSoon}
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-ink/5 px-4 py-2 text-sm dark:border-white/15 dark:bg-white/5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-violet dark:bg-lime" />
+                  {fmtDuration(program.duration)}
+                </span>
+              )}
+              {!program.comingSoon && lessonsPill() && (
                 <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-ink/5 px-4 py-2 text-sm dark:border-white/15 dark:bg-white/5">
                   {lessonsPill()}
                 </span>
               )}
-              <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-ink/5 px-4 py-2 text-sm dark:border-white/15 dark:bg-white/5">
-                {e.catalog[format].eyebrow}
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-ink/5 px-4 py-2 text-sm dark:border-white/15 dark:bg-white/5">
-                {e.catalog[delivery]}
-              </span>
+              {!program.comingSoon && (
+                <>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-ink/5 px-4 py-2 text-sm dark:border-white/15 dark:bg-white/5">
+                    {e.catalog[format].eyebrow}
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-ink/5 px-4 py-2 text-sm dark:border-white/15 dark:bg-white/5">
+                    {e.catalog[delivery]}
+                  </span>
+                </>
+              )}
             </div>
             {desc && <p className="mt-7 max-w-2xl text-lg text-muted lg:text-xl">{desc}</p>}
           </Reveal>
@@ -182,6 +212,54 @@ export default function EducationProgram() {
       {/* Schedule + signup */}
       <section className="relative pb-28">
         <div className="container-narrow">
+          {program.comingSoon ? (
+            /* ─── Coming soon stub ─────────────────────────────────────────
+               Программа в разработке: показываем приглушённую карточку
+               с заголовком «Скоро» и одной кнопкой — оставить заявку
+               в лист ожидания через мессенджер.
+            */
+            <Reveal>
+              <div className="relative overflow-hidden rounded-3xl border border-violet/40 bg-gradient-to-br from-violet/15 via-transparent to-transparent p-8 dark:border-lime/40 dark:from-lime/15 lg:p-14">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-24 -right-20 h-72 w-72 rounded-full bg-violet/30 blur-3xl dark:bg-lime/30"
+                />
+                <div className="relative max-w-2xl">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-violet/40 bg-violet/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-violet dark:border-lime/40 dark:bg-lime/10 dark:text-lime">
+                    <span className="h-1.5 w-1.5 rounded-full bg-violet dark:bg-lime animate-pulse" />
+                    {e.detail.comingSoonEyebrow}
+                  </span>
+                  <h2 className="mt-5 font-display text-3xl font-bold leading-tight lg:text-5xl">
+                    {e.detail.comingSoonTitle}
+                  </h2>
+                  <p className="mt-4 text-muted lg:text-lg">{e.detail.comingSoonDesc}</p>
+
+                  <div className="mt-8 grid gap-3 sm:max-w-md">
+                    <SignupButton
+                      label="Telegram"
+                      channel="telegram"
+                      message={buildComingSoonMessage()}
+                      variant="brand"
+                    />
+                    <SignupButton
+                      label="Instagram"
+                      channel="instagram"
+                      message={buildComingSoonMessage()}
+                      variant="ink"
+                    />
+                    <SignupButton
+                      label="WhatsApp"
+                      channel="whatsapp"
+                      message={buildComingSoonMessage()}
+                      variant="ink"
+                    />
+                  </div>
+
+                  <p className="mt-5 text-xs text-subtle">{e.detail.signupNote}</p>
+                </div>
+              </div>
+            </Reveal>
+          ) : (
           <Reveal>
             <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-paper p-6 shadow-sm dark:border-white/10 dark:bg-ink/40 lg:p-12">
               <div
@@ -276,39 +354,96 @@ export default function EducationProgram() {
                       : e.detail.signupHint}
                   </p>
 
-                  <div className="mt-6 grid gap-3">
-                    <SignupButton
-                      label="Telegram"
-                      channel="telegram"
-                      message={buildMessage()}
-                      variant="ink"
-                    />
-                    <SignupButton
-                      label="Instagram"
-                      channel="instagram"
-                      message={buildMessage()}
-                      variant="ink"
-                    />
-                    <SignupButton
-                      label="WhatsApp"
-                      channel="whatsapp"
-                      message={buildMessage()}
-                      variant="brand"
-                    />
-                  </div>
+                  {/* ─── Запись + связь с ментором ────────────────────────
+                     Кнопка «Записаться»:
+                       1. Залогинивает / редиректит на /login, если надо.
+                       2. Сохраняет запись на курс — он появится в кабинете.
+                       3. Открывает модалку с тремя кнопками мессенджеров,
+                          чтобы пользователь сразу написал ментору.
+                     Старый блок с TG/IG/WA убран снизу — теперь они только
+                     внутри модалки.
+                  */}
+                  <EnrollCta
+                    enrolled={isEnrolled(program.slug)}
+                    authed={isAuthenticated}
+                    onEnroll={() => {
+                      if (!isAuthenticated) {
+                        navigate(`/login?next=${encodeURIComponent(location.pathname + location.search)}`);
+                        return;
+                      }
+                      const wasEnrolled = isEnrolled(program.slug);
+                      enroll(program.slug);
+                      setContactModal({ open: true, isNew: !wasEnrolled });
+                    }}
+                    onOpen={() => setContactModal({ open: true, isNew: false })}
+                    t={enrollT}
+                  />
 
                   <p className="mt-5 text-xs text-subtle">{e.detail.signupNote}</p>
                 </div>
               </div>
             </div>
           </Reveal>
+          )}
         </div>
       </section>
+
+      {/* Модалка «Связаться с ментором» — открывается после нажатия
+         «Записаться». Содержит TG/IG/WA и переход в кабинет. */}
+      <MentorContactModal
+        open={contactModal.open}
+        programName={program.name}
+        message={buildMessage()}
+        isNew={contactModal.isNew}
+        onOpenCabinet={() => {
+          setContactModal({ open: false, isNew: false });
+          navigate(`/my-courses/${program.slug}`);
+        }}
+        onClose={() => setContactModal({ open: false, isNew: false })}
+        t={enrollT.modal}
+      />
     </>
   );
 }
 
 /* ─── helpers ────────────────────────────────────────────────────────────── */
+
+function EnrollCta({ enrolled, authed, onEnroll, onOpen, t }) {
+  return (
+    <div className="mt-6 rounded-2xl border border-violet/40 bg-gradient-to-br from-violet/10 via-transparent to-transparent p-5 dark:border-lime/40 dark:from-lime/10">
+      <span className="inline-flex items-center gap-2 rounded-full border border-violet/40 bg-violet/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-violet dark:border-lime/40 dark:bg-lime/10 dark:text-lime">
+        <span className="h-1.5 w-1.5 rounded-full bg-violet dark:bg-lime" />
+        {t.ctaEyebrow}
+      </span>
+      <h4 className="mt-3 font-display text-lg font-bold leading-snug">{t.ctaTitle}</h4>
+      <p className="mt-2 text-sm text-muted">{t.ctaDesc}</p>
+      {enrolled ? (
+        <button
+          type="button"
+          onClick={onOpen}
+          className="btn-primary mt-4 w-full justify-center"
+        >
+          {t.openCabinet}
+          <span aria-hidden="true">→</span>
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={onEnroll}
+          className="btn-primary mt-4 w-full justify-center"
+        >
+          {authed ? t.ctaButton : t.goToLogin}
+          <span aria-hidden="true">→</span>
+        </button>
+      )}
+      {enrolled && (
+        <div className="mt-2 text-center text-[11px] uppercase tracking-widest text-subtle">
+          {t.enrolledLabel}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function ToggleGroup({ label, value, onChange, options }) {
   return (

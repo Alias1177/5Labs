@@ -12,40 +12,103 @@ function getInitials(name = '') {
 }
 
 /**
- * Круглый аватар с плейсхолдером-инициалами.
- * photo — относительный путь из public/, например '/mentors/1.jpg'.
- * Если изображение не загружается (404 / пусто) — красиво падает в градиент+инициалы.
+ * Круглый аватар. Клик ведёт на Instagram ментора (если задан).
+ * На hover — фото немного увеличивается и появляется тонкое glow-кольцо.
+ * Если фото не загрузилось — мягко падаем в плашку с инициалами.
  */
-function Avatar({ photo, name, objectPosition }) {
+function Avatar({ photo, name, objectPosition, instagram }) {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(photo) && !failed;
 
-  return (
-    <div className="relative aspect-square w-full overflow-hidden rounded-full border border-ink/10 bg-gradient-to-br from-violet/20 via-violet/5 to-lime/20 shadow-xl transition-transform duration-500 group-hover:-translate-y-1 dark:border-white/10 dark:from-violet/40 dark:via-ink dark:to-lime/30">
+  const inner = (
+    <div className="relative h-full w-full overflow-hidden rounded-full border border-ink/10 bg-gradient-to-br from-violet/20 via-violet/5 to-lime/20 shadow-xl transition-transform duration-500 ease-out group-hover:scale-110 dark:border-white/10 dark:from-violet/40 dark:via-ink dark:to-lime/30">
       {showImage ? (
         <img
           src={photo}
           alt={name}
           loading="lazy"
           onError={() => setFailed(true)}
-          className="h-full w-full object-cover"
-          // objectPosition смещает фокус кропа — нужен для портретов,
-          // где лицо не строго по центру кадра.
+          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           style={objectPosition ? { objectPosition } : undefined}
         />
       ) : (
         <div className="flex h-full w-full items-center justify-center">
-          <span className="font-display text-5xl font-bold tracking-tight text-ink/70 dark:text-white/80 sm:text-6xl">
+          <span className="font-display text-4xl font-bold tracking-tight text-ink/70 dark:text-white/80 sm:text-5xl">
             {getInitials(name) || '5L'}
           </span>
         </div>
       )}
+
+      {/* Маленький Instagram-бейдж в углу — появляется на hover */}
+      {instagram && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-1 right-1 grid h-7 w-7 translate-y-1 place-items-center rounded-full bg-paper text-ink opacity-0 shadow-md transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 dark:bg-ink dark:text-paper"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+          </svg>
+        </span>
+      )}
+
       {/* Glow-кольцо на hover */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-full ring-0 ring-violet/0 transition-all duration-500 group-hover:ring-8 group-hover:ring-violet/20 dark:group-hover:ring-lime/20"
+        className="pointer-events-none absolute inset-0 rounded-full ring-0 ring-violet/0 transition-all duration-500 group-hover:ring-8 group-hover:ring-violet/25 dark:group-hover:ring-lime/25"
       />
     </div>
+  );
+
+  // Само фото — это кликабельная ссылка на Instagram. Открываем в новой
+  // вкладке с rel="noopener" — стандартная безопасная практика.
+  return (
+    <div className="relative aspect-square w-28 shrink-0 sm:w-32 lg:w-36">
+      {instagram ? (
+        <a
+          href={instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${name} — Instagram`}
+          className="group block h-full w-full"
+        >
+          {inner}
+        </a>
+      ) : (
+        <div className="group block h-full w-full">{inner}</div>
+      )}
+    </div>
+  );
+}
+
+/**
+ * Горизонтальная карточка ментора: круглое фото слева, текст справа.
+ * Под клик на фото — переход в Instagram (через Avatar).
+ * Сама карточка не кликабельна, но имеет лёгкий hover-эффект.
+ */
+function MentorCard({ person }) {
+  return (
+    <article className="surface-card flex items-start gap-5 rounded-2xl border border-ink/10 bg-paper/80 p-5 backdrop-blur-sm transition hover:border-violet/40 hover:shadow-[0_18px_40px_-20px_rgba(124,58,237,0.35)] dark:border-white/10 dark:bg-ink/40 dark:hover:border-lime/40 sm:p-6 lg:gap-7 lg:p-7">
+      <Avatar
+        photo={person.photo}
+        name={person.name}
+        objectPosition={person.objectPosition}
+        instagram={person.instagram}
+      />
+
+      <div className="min-w-0 flex-1">
+        <h3 className="font-display text-xl font-bold leading-tight lg:text-2xl">
+          {person.name}
+        </h3>
+        <p className="mt-1 text-sm font-semibold text-violet dark:text-lime lg:text-base">
+          {person.role}
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted lg:text-[15px]">
+          {person.bio}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -69,29 +132,15 @@ export default function Mentors() {
           <p className="mt-6 text-lg text-muted">{m.subtitle}</p>
         </Reveal>
 
-        <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
+        {/* Сетка карточек: 1 колонка на мобилке, 2 на десктопе.
+            Карточки фиксированной горизонтальной формы — фото слева, текст справа. */}
+        <div className="mt-14 grid grid-cols-1 gap-5 lg:mt-20 lg:grid-cols-2 lg:gap-6">
           {m.list.map((person, idx) => (
-            <Reveal key={idx} as="article" delay={idx * 120} className="group flex flex-col items-center text-center">
-              <div className="relative w-40 sm:w-48 lg:w-52">
-                <Avatar photo={person.photo} name={person.name} objectPosition={person.objectPosition} />
-              </div>
-              <h3 className="mt-6 font-display text-xl font-semibold lg:text-2xl">
-                {person.name}
-              </h3>
-              <p className="mt-1 text-sm uppercase tracking-[0.18em] text-violet dark:text-lime">
-                {person.role}
-              </p>
-              <p className="mt-4 w-full max-w-xs rounded-xl border border-ink/15 px-4 py-3 text-left text-sm leading-relaxed text-muted dark:border-white/15">
-                {person.bio}
-              </p>
+            <Reveal key={idx} delay={idx * 100}>
+              <MentorCard person={person} />
             </Reveal>
           ))}
         </div>
-
-        {/* Подсказка для владельца: куда закидывать фотки */}
-        <p className="mt-20 text-center text-xs uppercase tracking-[0.2em] text-ink/40 dark:text-white/40">
-          public/mentors/1.jpg · 2.jpg · 3.jpg · 4.jpg
-        </p>
       </div>
     </section>
   );

@@ -130,7 +130,7 @@ function CategoryIcon({ tag, className = 'h-7 w-7' }) {
 
 /* ─── Page ───────────────────────────────────────────────────────────────── */
 
-export default function ServicePage({ accent = 'violet', tier = 'partnership' }) {
+export default function ServicePage({ accent = 'violet', tier = 'partnership', children }) {
   const { t } = useI18n();
   const a = ACCENT[accent];
   const data = t.servicePages[tier];
@@ -227,6 +227,9 @@ export default function ServicePage({ accent = 'violet', tier = 'partnership' })
           </div>
         </div>
       </section>
+
+      {/* Optional injected blocks (e.g. Premium calculator) */}
+      {children}
 
       {/* CTA */}
       <section className="relative pb-28">

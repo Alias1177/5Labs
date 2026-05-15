@@ -99,42 +99,79 @@ export default function EducationPrograms({ format = 'individual' }) {
       <section className="relative pb-28 lg:pb-32">
         <div className="container-narrow">
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {PROGRAMS.map((p, i) => (
-              <Reveal
-                as={Link}
-                to={`/education/programs/${p.slug}?format=${format}&mode=${delivery}`}
-                key={p.slug}
-                delay={(i % 6) * 60}
-                className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border p-6 transition hover:-translate-y-1 lg:p-7 ${ACCENT_CARD[p.accent]}`}
-              >
-                {/* Accent bar — top-left strip */}
-                <div
-                  aria-hidden="true"
-                  className={`absolute left-0 top-0 h-1 w-12 ${ACCENT_BAR[p.accent]}`}
-                />
+            {PROGRAMS.map((p, i) => {
+              // Программы с флагом comingSoon показываются как div, а не как Link.
+              // Карточка не кликабельна и слегка приглушена, бейдж сообщает статус.
+              const commonClass = `group relative flex h-full flex-col overflow-hidden rounded-3xl border p-6 transition lg:p-7 ${ACCENT_CARD[p.accent]} ${
+                p.comingSoon ? 'opacity-80 cursor-not-allowed' : 'hover:-translate-y-1'
+              }`;
 
-                <div className="flex items-start justify-between">
-                  <span className={`font-display text-4xl font-bold tabular-nums ${ACCENT_NUM[p.accent]}`}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-paper/70 px-3 py-1 text-[11px] uppercase tracking-widest text-ink/70 dark:border-white/15 dark:bg-ink/40 dark:text-white/70">
-                    {fmtDuration(p.duration)}
-                  </span>
-                </div>
+              const inner = (
+                <>
+                  {/* Accent bar — top-left strip */}
+                  <div
+                    aria-hidden="true"
+                    className={`absolute left-0 top-0 h-1 w-12 ${ACCENT_BAR[p.accent]}`}
+                  />
 
-                <h3 className="mt-6 font-display text-2xl font-bold leading-tight lg:text-3xl">
-                  {p.name}
-                </h3>
-                <p className="mt-3 text-sm text-muted">
-                  {e.catalog.descriptions[p.descKey]}
-                </p>
+                  <div className="flex items-start justify-between">
+                    <span className={`font-display text-4xl font-bold tabular-nums ${ACCENT_NUM[p.accent]}`}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    {p.comingSoon ? (
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-violet/40 bg-violet/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-violet dark:border-lime/40 dark:bg-lime/10 dark:text-lime">
+                        <span className="h-1.5 w-1.5 rounded-full bg-violet dark:bg-lime animate-pulse" />
+                        {e.catalog.comingSoon}
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-paper/70 px-3 py-1 text-[11px] uppercase tracking-widest text-ink/70 dark:border-white/15 dark:bg-ink/40 dark:text-white/70">
+                        {fmtDuration(p.duration)}
+                      </span>
+                    )}
+                  </div>
 
-                <div className="mt-auto pt-7 inline-flex items-center gap-2 text-sm font-semibold">
-                  {e.catalog.signUp}
-                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
-                </div>
-              </Reveal>
-            ))}
+                  <h3 className="mt-6 font-display text-2xl font-bold leading-tight lg:text-3xl">
+                    {p.name}
+                  </h3>
+                  <p className="mt-3 text-sm text-muted">
+                    {e.catalog.descriptions[p.descKey]}
+                  </p>
+
+                  <div className="mt-auto pt-7 inline-flex items-center gap-2 text-sm font-semibold">
+                    {p.comingSoon ? (
+                      <span className="text-muted">{e.catalog.comingSoon}</span>
+                    ) : (
+                      <>
+                        {e.catalog.signUp}
+                        <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+                      </>
+                    )}
+                  </div>
+                </>
+              );
+
+              return p.comingSoon ? (
+                <Reveal
+                  as="div"
+                  key={p.slug}
+                  delay={(i % 6) * 60}
+                  className={commonClass}
+                  aria-disabled="true"
+                >
+                  {inner}
+                </Reveal>
+              ) : (
+                <Reveal
+                  as={Link}
+                  to={`/education/programs/${p.slug}?format=${format}&mode=${delivery}`}
+                  key={p.slug}
+                  delay={(i % 6) * 60}
+                  className={commonClass}
+                >
+                  {inner}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

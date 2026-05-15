@@ -10,12 +10,14 @@ import EducationPage from './pages/EducationPage.jsx';
 import EducationPrograms from './pages/EducationPrograms.jsx';
 import EducationProgram from './pages/EducationProgram.jsx';
 import EducationSeminars from './pages/EducationSeminars.jsx';
+import EducationSeminarsLive from './pages/EducationSeminarsLive.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import NotFound from './pages/NotFound.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Roadmap from './pages/Roadmap.jsx';
 import Topic from './pages/Topic.jsx';
+import MyCourse from './pages/MyCourse.jsx';
 import ProtectedRoute from './auth/ProtectedRoute.jsx';
 
 export default function App() {
@@ -31,6 +33,7 @@ export default function App() {
           <Route path="/services/premium" element={<PremiumPage />} />
           <Route path="/education" element={<EducationPage />} />
           <Route path="/education/seminars" element={<EducationSeminars />} />
+          <Route path="/education/seminars/free" element={<EducationSeminarsLive />} />
           <Route path="/education/individual" element={<EducationPrograms format="individual" />} />
           <Route path="/education/group" element={<EducationPrograms format="group" />} />
           <Route path="/education/programs/:slug" element={<EducationProgram />} />
@@ -41,6 +44,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/my-courses/:slug"
+            element={
+              <ProtectedRoute>
+                <MyCourse />
               </ProtectedRoute>
             }
           />

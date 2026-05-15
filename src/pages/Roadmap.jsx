@@ -4,6 +4,8 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import { TOPICS } from '../data/topics.js';
 import { useRoadmapProgress } from '../data/useRoadmapProgress.js';
+import { useEnrollments, unlockedLessonsCount } from '../data/useEnrollments.js';
+import { getProgram } from '../data/educationPrograms.js';
 
 /**
  * Страница роадмапа.
@@ -141,6 +143,7 @@ function TopicNode({ topic, index, status, t }) {
 export default function Roadmap() {
   const { t } = useI18n();
   const { completedSet, completed } = useRoadmapProgress();
+  const { list: enrolledList } = useEnrollments();
 
   const pathContainerRef = useRef(null);
   const itemRefs = useRef([]);
@@ -268,6 +271,78 @@ export default function Roadmap() {
             />
           </div>
         </div>
+
+        {/* ─── Мои курсы (синхронизировано с дашбордом) ─────────────────
+           Если у пользователя есть записи на программы, показываем их
+           компактным списком прямо здесь, чтобы роадмап «синкался» с
+           кабинетом — одни и те же курсы, один и тот же прогресс.
+        */}
+        {enrolledList.length > 0 && (
+          <div className="mt-8">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <span className="eyebrow">{t.myCourses.eyebrow}</span>
+                <p className="mt-1 text-sm text-muted">{t.myCourses.subtitle}</p>
+              </div>
+              <Link
+                to="/dashboard"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink hover:text-violet dark:text-paper dark:hover:text-lime"
+              >
+                {t.dashboard.eyebrow}
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {enrolledList.map((en) => {
+                const program = getProgram(en.slug);
+                if (!program) return null;
+                const topicsRaw = t.educationPage.detail.topics[program.descKey];
+                const topicsData = Array.isArray(topicsRaw)
+                  ? { blocks: topicsRaw.map((title) => ({ title })) }
+                  : (topicsRaw || { blocks: [] });
+                const total = (topicsData.blocks || []).length;
+                const done = (en.progress || []).filter((i) => i < total).length;
+                const unlocked = unlockedLessonsCount(en, total);
+                const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+                return (
+                  <Link
+                    key={en.slug}
+                    to={`/my-courses/${en.slug}`}
+                    className="group surface-card relative block overflow-hidden rounded-2xl p-4 transition hover:-translate-y-0.5"
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="font-display text-sm font-bold leading-tight truncate">
+                          {program.name}
+                        </div>
+                        <div className="mt-0.5 text-[11px] text-subtle">
+                          {en.paid ? t.myCourses.paidBadge : t.myCourses.previewBadge}
+                          {' · '}
+                          {unlocked} / {total} {t.course.lessonsCount}
+                        </div>
+                      </div>
+                      <span className="font-display text-base font-bold tabular-nums">
+                        {pct}%
+                      </span>
+                    </div>
+                    <div className="relative mt-3 h-1.5 w-full overflow-hidden rounded-full bg-ink/10 dark:bg-white/10">
+                      <div
+                        className={`h-full rounded-full transition-[width] duration-700 ease-out ${
+                          en.paid
+                            ? 'bg-gradient-to-r from-lime to-violet'
+                            : 'bg-gradient-to-r from-violet to-lime'
+                        }`}
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Topic path */}
         <div ref={pathContainerRef} className="relative mt-14">

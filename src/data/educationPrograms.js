@@ -15,6 +15,11 @@
  *  - { months: N } — известная длительность; форматируется через
  *    educationPage.catalog.durations[String(N)] (1 / 1.5 / 2 — есть ключи).
  *  - null — длительность не зафиксирована (показываем «По запросу»).
+ *
+ * comingSoon: true — программа в разработке. В каталоге показывается с
+ *   плашкой «Coming soon», карточка не кликабельна. На странице программы
+ *   /education/programs/<slug> вместо расписания/формы записи отрисовывается
+ *   заглушка «Скоро откроем».
  */
 export const PROGRAMS = [
   { slug: 'smm-standart',             name: 'SMM Standart',              duration: { months: 1 },   accent: 'violet',  descKey: 'smmStandart' },
@@ -23,7 +28,8 @@ export const PROGRAMS = [
   { slug: 'mobilography',             name: 'Mobilography',              duration: { months: 1 },   accent: 'violet',  descKey: 'mobilography' },
   { slug: 'meta',                     name: 'Meta',                      duration: { months: 1 },   accent: 'lime',    descKey: 'meta' },
   { slug: 'prompt-engineering',       name: 'Prompt Engineering',        duration: null,            accent: 'inverse', descKey: 'promptEngineering' },
-  { slug: 'graphic-design',           name: 'Graphic Design',            duration: null,            accent: 'violet',  descKey: 'graphicDesign' },
+  { slug: 'ai-video',                 name: 'AI Video',                  duration: null,            accent: 'lime',    descKey: 'aiVideo',     comingSoon: true },
+  { slug: 'graphic-design',           name: 'Graphic Design',            duration: null,            accent: 'violet',  descKey: 'graphicDesign', comingSoon: true },
   { slug: 'black-magic',              name: 'Black Magic',               duration: { months: 1 },   accent: 'lime',    descKey: 'blackMagic' },
   { slug: 'black-magic-mobilography', name: 'Black Magic + Mobilography', duration: { months: 2 },  accent: 'inverse', descKey: 'blackMagicMobilography' },
 ];

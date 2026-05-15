@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import { useAuth } from '../auth/AuthContext.jsx';
@@ -8,6 +8,9 @@ export default function Login() {
   const { t } = useI18n();
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  // ?next=/some/path — куда вернуться после логина. По умолчанию — кабинет.
+  const nextPath = new URLSearchParams(location.search).get('next') || '/dashboard';
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [active, setActive] = useState(null); // 'email' | 'password' | null
@@ -63,9 +66,10 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Mock-аутентификация: принимаем любые данные и пускаем в кабинет.
+    // Mock-аутентификация: принимаем любые данные и пускаем в кабинет
+    // (или туда, откуда пришли — параметр ?next=).
     login(email || 'guest@5labs.dev');
-    navigate('/dashboard');
+    navigate(nextPath);
   };
 
   return (

@@ -91,6 +91,36 @@ export default function EducationSeminars() {
         </div>
       </section>
 
+      {/* Free live banner — бесплатная прямая трансляция */}
+      <section className="relative pb-12 lg:pb-16">
+        <div className="container-narrow">
+          <Reveal>
+            <Link
+              to="/education/seminars/free"
+              className="group relative flex flex-col gap-4 overflow-hidden rounded-3xl border border-violet/40 bg-gradient-to-br from-violet/15 via-transparent to-lime/10 p-6 transition hover:-translate-y-1 hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:p-7 lg:p-8"
+            >
+              <div aria-hidden="true" className="absolute left-0 top-0 h-1 w-24 bg-violet" />
+              <div>
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-violet dark:text-lime">
+                  <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-red-500" />
+                  Live · Бесплатно
+                </div>
+                <h3 className="mt-3 font-display text-2xl font-bold leading-tight lg:text-3xl">
+                  Бесплатные семинары
+                </h3>
+                <p className="mt-2 max-w-xl text-sm text-muted lg:text-base">
+                  Прямая трансляция в открытом доступе. Подключайся в любое время — плеер сам подхватит эфир.
+                </p>
+              </div>
+              <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-violet px-5 py-3 text-sm font-semibold text-paper transition group-hover:bg-violet-600 dark:bg-lime dark:text-ink dark:group-hover:bg-lime-300">
+                Смотреть эфир
+                <span aria-hidden="true">→</span>
+              </span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Upcoming list */}
       <section className="relative pb-28 lg:pb-32">
         <div className="container-narrow">
