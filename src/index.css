@@ -83,6 +83,23 @@
     @apply relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-violet after:transition-all hover:after:w-full dark:after:bg-lime;
   }
 
+  /* Текст с «переливанием» в фиолетовый — бегущий градиент по буквам. */
+  .text-shimmer-violet {
+    background-image: linear-gradient(90deg, #7D39EB 0%, #AF7FF4 25%, #7D39EB 50%, #AF7FF4 75%, #7D39EB 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: text-shimmer-violet 3s linear infinite;
+  }
+  @keyframes text-shimmer-violet {
+    to { background-position: -200% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .text-shimmer-violet { animation: none; }
+  }
+
   .text-muted {
     @apply text-ink/70 dark:text-white/70;
   }

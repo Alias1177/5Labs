@@ -147,9 +147,6 @@ export default function SplineScene() {
             </div>
           </div>
         )}
-
-        {/* плавное затухание к фону страницы снизу */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-paper dark:to-ink z-10" />
       </div>
     </section>
   );

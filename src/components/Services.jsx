@@ -53,8 +53,7 @@ function Card({ id, accent, tag, title, desc, features, href, ctaLabel }) {
             to={href}
             className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${a.btn}`}
           >
-            {ctaLabel}
-            <span aria-hidden="true">→</span>
+            Let's go
           </Link>
         </div>
       </div>

@@ -23,11 +23,11 @@ export default function Contact() {
             <p className="mt-6 max-w-md text-muted">{t.contact.subtitle}</p>
 
             <div className="mt-10 space-y-4 text-sm">
-              <a href="mailto:hello@5labs.agency" className="block link-underline text-ink/80 dark:text-white/80">
-                hello@5labs.agency
+              <a href="mailto:fivelabssuport@gmail.com" className="block link-underline text-ink/80 dark:text-white/80">
+                fivelabssuport@gmail.com
               </a>
-              <a href="tel:+10000000000" className="block link-underline text-ink/80 dark:text-white/80">
-                +1 (000) 000-00-00
+              <a href="tel:+994104343874" className="block link-underline text-ink/80 dark:text-white/80">
+                +994 10 434 38 74
               </a>
             </div>
           </div>

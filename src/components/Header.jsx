@@ -176,12 +176,12 @@ export default function Header() {
             </div>
           </div>
 
-          <HashLink
-            to="#contact"
+          <Link
+            to="/contact"
             className="link-underline text-ink/80 hover:text-ink dark:text-white/80 dark:hover:text-paper"
           >
             {t.nav.contact}
-          </HashLink>
+          </Link>
         </nav>
 
         {/* Right cluster */}
@@ -282,13 +282,13 @@ export default function Header() {
               {t.nav.educationGroup}
             </Link>
           </div>
-          <HashLink
-            to="#contact"
+          <Link
+            to="/contact"
             onClick={closeMobile}
             className="rounded-lg px-3 py-3 text-ink/85 hover:bg-ink/5 dark:text-white/85 dark:hover:bg-white/5"
           >
             {t.nav.contact}
-          </HashLink>
+          </Link>
           <div className="mt-4 flex items-center justify-between gap-3">
             <LangSwitcher />
             {isAuthenticated ? (

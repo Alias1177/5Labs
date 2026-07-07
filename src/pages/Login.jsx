@@ -177,7 +177,7 @@ export default function Login() {
                   <input type="checkbox" className="h-4 w-4 rounded border-ink/30 accent-violet dark:accent-lime" />
                   {t.login.remember}
                 </label>
-                <a href="#" className="link-underline text-ink/70 hover:text-ink dark:text-white/70 dark:hover:text-paper">
+                <a href="#" className="link-underline text-shimmer-violet font-semibold">
                   {t.login.forgot}
                 </a>
               </div>

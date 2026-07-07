@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n/I18nContext.jsx';
 import Logo from './Logo.jsx';
 import LangSwitcher from './LangSwitcher.jsx';
@@ -35,7 +36,11 @@ export default function Footer() {
               <FooterLink href="#about">{t.nav.about}</FooterLink>
               <FooterLink href="#services">{t.nav.services}</FooterLink>
               <FooterLink href="#education">{t.nav.education}</FooterLink>
-              <FooterLink href="#contact">{t.nav.contact}</FooterLink>
+              <li>
+                <Link to="/contact" className="text-ink/75 transition hover:text-violet dark:text-white/75 dark:hover:text-lime">
+                  {t.nav.contact}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -62,8 +67,8 @@ export default function Footer() {
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-ink/10 pt-6 text-sm text-subtle dark:border-white/10 sm:flex-row sm:items-center">
           <div>© {year} 5 Labs Agency. {t.footer.rights}.</div>
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-ink dark:hover:text-paper">Privacy</a>
-            <a href="#" className="hover:text-ink dark:hover:text-paper">Terms</a>
+            <Link to="/privacy" className="hover:text-ink dark:hover:text-paper">{t.footer.privacy}</Link>
+            <Link to="/terms" className="hover:text-ink dark:hover:text-paper">{t.footer.terms}</Link>
           </div>
         </div>
       </div>

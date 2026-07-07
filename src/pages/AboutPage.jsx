@@ -123,11 +123,25 @@ function MentorCard({ person }) {
 export default function AboutPage() {
   const { t } = useI18n();
   const m = t.mentors;
+  const intro = t.aboutIntro;
 
   return (
     <>
+      {/* About company / mission */}
+      <section className="relative pt-28 pb-4 lg:pt-40 lg:pb-8">
+        <div className="container-narrow">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="eyebrow">{intro.eyebrow}</span>
+            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
+              {intro.title}
+            </h1>
+            <p className="mt-6 text-lg text-muted">{intro.body}</p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Mentors */}
-      <section className="relative pt-28 pb-20 lg:pt-40 lg:pb-28">
+      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-28">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-1/2 top-20 -z-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-violet/20 blur-[120px] dark:bg-violet/30"
@@ -142,13 +156,27 @@ export default function AboutPage() {
           </Reveal>
 
           {/* Сетка карточек: 1 колонка на мобиле, 2 — на десктопе.
-              Сами карточки горизонтальные (фото слева, текст справа). */}
+              Сами карточки горизонтальные (фото слева, текст справа).
+              При нечётном числе карточек последняя центрируется и сохраняет
+              ширину обычной колонки, чтобы не растягиваться на весь ряд. */}
           <div className="mt-14 grid grid-cols-1 gap-5 lg:mt-20 lg:grid-cols-2 lg:gap-6">
-            {m.list.map((person, idx) => (
-              <Reveal key={idx} delay={idx * 100}>
-                <MentorCard person={person} />
-              </Reveal>
-            ))}
+            {m.list.map((person, idx) => {
+              const isLoneLast =
+                idx === m.list.length - 1 && m.list.length % 2 === 1;
+              return (
+                <Reveal
+                  key={idx}
+                  delay={idx * 100}
+                  className={
+                    isLoneLast
+                      ? 'lg:col-span-2 lg:mx-auto lg:w-[calc(50%-0.75rem)]'
+                      : undefined
+                  }
+                >
+                  <MentorCard person={person} />
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

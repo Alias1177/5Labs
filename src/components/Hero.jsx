@@ -13,12 +13,25 @@ export default function Hero() {
   const { t } = useI18n();
   return (
     <section id="home" className="relative overflow-hidden pt-28 lg:pt-36">
+      {/* Background image (statue) — covers the hero area above the marquee */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 bottom-[120px]">
+        <img
+          src="/hero-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover object-right"
+        />
+        {/* Readability overlay — light wash in light theme, lighter wash in dark theme so the statue stays visible */}
+        <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/80 to-paper/30 dark:from-ink/90 dark:via-ink/40 dark:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/30 via-transparent to-paper dark:from-transparent dark:via-transparent dark:to-ink/70" />
+      </div>
+
       {/* Decorative glows */}
       <div className="pointer-events-none absolute -top-40 -left-40 h-[500px] w-[500px] bg-glow-violet opacity-60" />
       <div className="pointer-events-none absolute -bottom-40 left-1/3 h-[500px] w-[500px] bg-glow-lime opacity-40" />
 
       <div className="container-narrow relative">
-        <div className="flex flex-col items-start">
+        <div className="flex min-h-[460px] flex-col items-start lg:min-h-[540px]">
           <span className="chip">
             <span className="h-1.5 w-1.5 rounded-full bg-violet dark:bg-lime" />
             {t.hero.eyebrow}
@@ -43,12 +56,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Visual row: 3 quick stats */}
-        <div className="mt-16 grid grid-cols-1 gap-4 md:mt-24 md:grid-cols-3">
-          <HeroStat value="150+" label={t.hero.stat1} accent="violet" />
-          <HeroStat value="40" label={t.hero.stat2} accent="lime" />
-          <HeroStat value="12" label={t.hero.stat3} accent="violet" />
-        </div>
       </div>
 
       {/* Marquee ticker */}

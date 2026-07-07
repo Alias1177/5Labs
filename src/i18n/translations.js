@@ -16,9 +16,9 @@ export const translations = {
     },
     hero: {
       eyebrow: 'Yeni nesil bir ajans',
-      title: 'Daha yüksek sesle konuşan markalar inşa ediyoruz.',
+      title: 'Hayalindeki Lab!',
       subtitle:
-        'Strateji, tasarım ve eğitim tek bir ekosistemde. 5 Labs — fikirden ölçülebilir sonuçlara kadar büyüme ortağınız.',
+        'Strateji, tasarım ve eğitim tek bir ekosistemde. 5 Labs Agency — fikirden ölçülebilir sonuçlara kadar büyüme ortağınız.',
       ctaPrimary: 'Projeye başla',
       ctaSecondary: 'Çalışmaları gör',
       stat1: 'proje',
@@ -26,7 +26,7 @@ export const translations = {
       stat3: 'ülke',
     },
     about: {
-      eyebrow: '5 Labs hakkında',
+      eyebrow: '5 Labs Agency hakkında',
       title: 'Beş disiplin. Tek ekip. Sonsuz olasılıklar.',
       p1: 'Strateji, kreatif, teknoloji, medya ve eğitimi tek çatı altında birleştiren çok disiplinli bir ajansız.',
       p2: 'Laboratuvarlarımız markaların sesini bulmasına, topluluklar kurmasına ve gurur duyabilecekleri ürünler çıkarmasına yardımcı olur.',
@@ -215,10 +215,10 @@ export const translations = {
       corner: '// LAB 03',
       caption: 'Sonsuz döngü • Autoplay',
       items: [
-        { num: '01', text: '3D render' },
-        { num: '02', text: 'Etkileşim' },
-        { num: '03', text: 'WebGL' },
-        { num: '04', text: 'Motion tasarım' },
+        { num: '01', text: 'Pazarlama' },
+        { num: '02', text: 'Videografi' },
+        { num: '03', text: 'Black magic' },
+        { num: '04', text: 'Sosyal medya' },
       ],
     },
     education: {
@@ -248,7 +248,7 @@ export const translations = {
       eyebrow: 'Eğitim',
       title: 'Yaptığımız işi öğretiyoruz.',
       subtitle:
-        'Format, program ve takvim seçin — kayıt için doğrudan mesajlaşma uygulamasından yazın. Dersleri 5 Labs uygulayıcıları veriyor.',
+        'Format, program ve takvim seçin — kayıt için doğrudan mesajlaşma uygulamasından yazın. Dersleri 5 Labs Agency uygulayıcıları veriyor.',
       formats: {
         cta: 'Aç',
         seminars: {
@@ -271,7 +271,7 @@ export const translations = {
         },
       },
       why: {
-        eyebrow: 'Neden 5 Labs',
+        eyebrow: 'Neden 5 Labs Agency',
         title: 'Bir ajansın içinden büyüyen okul.',
         items: [
           {
@@ -324,7 +324,7 @@ export const translations = {
           promptEngineering: 'Bir araç olarak AI: promptlar, zincirler, ajanlar — pazarlama görevleri etrafında.',
           aiVideo: 'AI video üretimi: senaryo, görsel, kurgu — sıfırdan tek el ile.',
           graphicDesign: 'Grafik tasarım temelleri: kompozisyon, tipografi, renk, kimlik.',
-          blackMagic: '5 Labs’a özgü metodoloji — ileri düzey büyüme teknikleri.',
+          blackMagic: '5 Labs Agency’a özgü metodoloji — ileri düzey büyüme teknikleri.',
           blackMagicMobilography: 'Black Magic + mobilografi tek programda. Daha geniş ve daha derin.',
         },
       },
@@ -497,7 +497,7 @@ export const translations = {
               { title: 'İleri büyüme taktikleri', desc: '' },
               { title: 'Dönüşüm zincirleri', desc: '' },
               { title: 'Zor nişler için kreatif', desc: '' },
-              { title: '5 Labs vakaları', desc: '' },
+              { title: '5 Labs Agency vakaları', desc: '' },
             ],
           },
           blackMagicMobilography: {
@@ -530,12 +530,12 @@ export const translations = {
           smmIntensive: {
             title: 'SMM yoğun programı',
             format: '2 günlük yoğun program',
-            location: 'İstanbul, 5 Labs ofisi',
+            location: 'İstanbul, 5 Labs Agency ofisi',
           },
           mobilographyWorkshop: {
             title: 'Mobilografi atölyesi',
             format: '1 gün, uygulamalı',
-            location: 'İstanbul, 5 Labs stüdyosu',
+            location: 'İstanbul, 5 Labs Agency stüdyosu',
           },
           aiMarketing: {
             title: 'Pazarlamada AI',
@@ -550,7 +550,7 @@ export const translations = {
       items: [
         { value: '150+', label: 'üretimdeki proje' },
         { value: '40', label: 'büyüyen müşteri' },
-        { value: '12', label: 'ülkede varlık' },
+        { value: '1k+', label: 'eğitimdeki öğrenci' },
         { value: '98%', label: 'müşteri NPS’i' },
       ],
     },
@@ -563,6 +563,8 @@ export const translations = {
       message: 'Mesaj',
       submit: 'Gönder',
       thanks: 'Teşekkürler! Mesajınızı aldık.',
+      phoneLabel: 'Telefon',
+      socialLabel: 'Sosyal medya',
     },
     footer: {
       tagline: '5 Labs Agency — marka, strateji ve eğitim laboratuvarı.',
@@ -570,19 +572,48 @@ export const translations = {
       services: 'Hizmetler',
       language: 'Dil',
       rights: 'Tüm hakları saklıdır',
+      privacy: 'Gizlilik',
+      terms: 'Şartlar',
+    },
+    legal: {
+      updated: 'Son güncelleme: Mayıs 2026',
+      privacy: {
+        title: 'Gizlilik Politikası',
+        sections: [
+          { h: 'Hangi verileri topluyoruz', p: 'İletişim formu üzerinden bizimle paylaştığınız adınız, e-postanız ve mesajınız gibi verileri ve sitenin çalışması için gerekli teknik bilgileri topluyoruz.' },
+          { h: 'Verileri nasıl kullanıyoruz', p: 'Verilerinizi yalnızca taleplerinize yanıt vermek, hizmet sunmak ve siteyi iyileştirmek için kullanırız. Verilerinizi üçüncü taraflara satmıyoruz.' },
+          { h: 'Çerezler', p: 'Site, temel işlevsellik ve anonim analiz için çerez kullanır. Tarayıcı ayarlarından çerezleri devre dışı bırakabilirsiniz.' },
+          { h: 'İletişim', p: 'Verilerinizle ilgili sorular için fivelabssuport@gmail.com adresinden bize ulaşabilirsiniz.' },
+        ],
+      },
+      terms: {
+        title: 'Kullanım Şartları',
+        sections: [
+          { h: 'Şartların kabulü', p: 'Bu siteyi kullanarak burada belirtilen koşulları kabul etmiş olursunuz. Şartları kabul etmiyorsanız lütfen siteyi kullanmayın.' },
+          { h: 'Hizmetlerin kullanımı', p: 'Sitedeki içerik ve hizmetler yalnızca yasal amaçlarla kullanılabilir. İçeriği izinsiz çoğaltmak yasaktır.' },
+          { h: 'Sorumluluk sınırı', p: 'Site "olduğu gibi" sunulur. Sitenin kullanımından doğabilecek dolaylı zararlardan sorumlu değiliz.' },
+          { h: 'Değişiklikler', p: 'Bu şartları zaman zaman güncelleyebiliriz. Güncel sürüm her zaman bu sayfada yer alır.' },
+        ],
+      },
+    },
+    aboutIntro: {
+      eyebrow: 'Şirket hakkında',
+      title: 'Markaları büyüten bir laboratuvar.',
+      body:
+        '5 Labs Agency — strateji, tasarım, prodüksiyon ve eğitimi tek bir ekosistemde birleştiren bir ekip. Görevimiz: işletmelerin fikirden ölçülebilir sonuçlara ulaşmasına yardımcı olmak. Teori değil — gerçek vakalar, gerçek büyüme.',
     },
     mentors: {
       eyebrow: 'Ekip',
-      title: 'Sizi 5 Labs mentorlarıyla tanıştıralım.',
+      title: 'Best mentors fivelabsagency',
       subtitle:
-        'Strateji, prodüksiyon, eğitim ve ortaklıkları yöneten ekip. Her biri kendi alanında 10+ yıllık uygulama deneyimine sahip.',
+        'Strateji, prodüksiyon, eğitim ve ortaklıkları yöneten ekip. Pazarda 5 yıl.',
       list: [
         {
           name: 'Narmina',
           role: 'Pazarlama ve Meta Ads mentörü',
           photo: '/mentors/narmina.jpg',
           objectPosition: '50% 22%',
-          instagram: 'https://instagram.com/narmina',
+          instagram: 'https://www.instagram.com/narmincoach',
           bio: 'Pazarlama ve Meta Ads mentörüyüm. Öğrencilere pazar analizinden hedef kitlenin belirlenmesine ve gerçek müşteri getiren stratejilerin kurulmasına kadar sistemli bir yaklaşım kazandırıyorum. Bu eğitimde sadece teori değil — pazarlamacı gibi düşünmeyi, reklam yönetmeyi ve sonucu kontrol etmeyi öğreniyorsunuz.',
         },
         {
@@ -590,23 +621,15 @@ export const translations = {
           role: 'SMM ve içerik mentörü',
           photo: '/mentors/smm.jpg',
           objectPosition: '50% 30%',
-          instagram: 'https://instagram.com/farida',
+          instagram: 'https://www.instagram.com/phareeda.s',
           bio: 'Sosyal medyanın sıfırdan nasıl işlediğini ve nasıl büyüme ile satış aracına dönüştüğünü anlamana yardım ediyorum. Her şeyi sade bir dille anlatıyorum: nasıl tanıtım yapılır, içerik üretilir ve doğru kitle bulunur. Benimle karmaşık şemalara ve gereksiz teoriye boğulmadan kendi projeni güvenle başlatabilir ya da var olan projeni bir üst seviyeye taşıyabilirsin.',
-        },
-        {
-          name: 'Aziza',
-          role: 'Mobilografi mentörü',
-          photo: '/mentors/aziza.jpg',
-          objectPosition: '50% 25%',
-          instagram: 'https://www.instagram.com/azizas.smm',
-          bio: 'Mobil içerik üretiminde profesyonel bir yaklaşım geliştirmenize yardım ediyorum: kompozisyon, ışık ve çekimden montaja ve görsel sunuma kadar. Eğitimde öğrenciler yalnızca teknik becerileri değil, aynı zamanda dikkat çeken, kişisel markayı güçlendiren ve tanıtıma yardımcı olan içerikler üretmeyi öğreniyor.',
         },
         {
           name: 'Aytach',
           role: 'Kreatif direktör ve tasarım mentörü',
           photo: '/mentors/Itach.jpg',
           objectPosition: '50% 28%',
-          instagram: 'https://instagram.com/aytach',
+          instagram: 'https://www.instagram.com/aitajs.blog',
           bio: 'Kreatif direktör ve tasarım mentörü. Öğrencilere kompozisyon ve tipografiden kurumsal kimliğe ve yaratıcı konseptlere kadar görsel düşünceyi inşa etmelerinde yardımcı oluyorum. Bu eğitimde sadece "güzel" tasarım yapmayı değil, markayı güçlendiren ve gerçek iş problemlerini çözen sistemli bir yaklaşımı ediniyorsunuz.',
         },
       ],
@@ -729,11 +752,11 @@ export const translations = {
       topics: {
         intro: {
           title: 'Pazarlamaya giriş',
-          summary: 'Pazarlamanın beş sütunu ve 5 Labs ekibinin bakış açısı.',
+          summary: 'Pazarlamanın beş sütunu ve 5 Labs Agency ekibinin bakış açısı.',
           lessons: [
             'Pazarlama nedir, ne değildir',
             'Huninin beş aşaması',
-            '5 Labs yaklaşımı',
+            '5 Labs Agency yaklaşımı',
           ],
           highlights: [
             'Temel terimleri anlıyorsun',
@@ -973,9 +996,9 @@ export const translations = {
     },
     hero: {
       eyebrow: 'Agency of a new generation',
-      title: 'We build brands that speak louder.',
+      title: 'Your dream Lab!',
       subtitle:
-        'Strategy, design and education in one ecosystem. 5 Labs is your growth partner — from idea to measurable impact.',
+        'Strategy, design and education in one ecosystem. 5 Labs Agency is your growth partner — from idea to measurable impact.',
       ctaPrimary: 'Start a project',
       ctaSecondary: 'See our work',
       stat1: 'projects',
@@ -983,7 +1006,7 @@ export const translations = {
       stat3: 'countries',
     },
     about: {
-      eyebrow: 'About 5 Labs',
+      eyebrow: 'About 5 Labs Agency',
       title: 'Five disciplines. One team. Endless possibilities.',
       p1: 'We are a multidisciplinary agency combining strategy, creative, technology, media and education under one roof.',
       p2: 'Our labs help brands find their voice, build communities and ship products they can be proud of.',
@@ -1172,10 +1195,10 @@ export const translations = {
       corner: '// LAB 03',
       caption: 'Infinite loop • Autoplay',
       items: [
-        { num: '01', text: '3D render' },
-        { num: '02', text: 'Interaction' },
-        { num: '03', text: 'WebGL' },
-        { num: '04', text: 'Motion design' },
+        { num: '01', text: 'Marketing' },
+        { num: '02', text: 'Videography' },
+        { num: '03', text: 'Black magic' },
+        { num: '04', text: 'Social media' },
       ],
     },
     education: {
@@ -1205,7 +1228,7 @@ export const translations = {
       eyebrow: 'Education',
       title: 'We teach what we do.',
       subtitle:
-        'Pick a format, a program and a schedule — sign up directly via messenger. Taught by 5 Labs practitioners.',
+        'Pick a format, a program and a schedule — sign up directly via messenger. Taught by 5 Labs Agency practitioners.',
       formats: {
         cta: 'Open',
         seminars: {
@@ -1228,7 +1251,7 @@ export const translations = {
         },
       },
       why: {
-        eyebrow: 'Why 5 Labs',
+        eyebrow: 'Why 5 Labs Agency',
         title: 'A school grown out of an agency.',
         items: [
           {
@@ -1281,7 +1304,7 @@ export const translations = {
           promptEngineering: 'AI as a tool: prompts, chains, agents — built around marketing tasks.',
           aiVideo: 'AI video production: idea, visuals, edit — from zero to publish, solo.',
           graphicDesign: 'Graphic design basics: composition, typography, color, identity.',
-          blackMagic: '5 Labs proprietary methodology — advanced growth techniques.',
+          blackMagic: '5 Labs Agency proprietary methodology — advanced growth techniques.',
           blackMagicMobilography: 'Black Magic + mobilography in one program. Wider and deeper.',
         },
       },
@@ -1526,7 +1549,7 @@ export const translations = {
               { title: 'Advanced growth tactics', desc: '' },
               { title: 'Conversion loops', desc: '' },
               { title: 'Creative for hard niches', desc: '' },
-              { title: '5 Labs case studies', desc: '' },
+              { title: '5 Labs Agency case studies', desc: '' },
             ],
           },
           blackMagicMobilography: {
@@ -1559,12 +1582,12 @@ export const translations = {
           smmIntensive: {
             title: 'SMM intensive',
             format: '2-day intensive',
-            location: 'Istanbul, 5 Labs office',
+            location: 'Istanbul, 5 Labs Agency office',
           },
           mobilographyWorkshop: {
             title: 'Mobilography workshop',
             format: '1 day, hands-on',
-            location: 'Istanbul, 5 Labs studio',
+            location: 'Istanbul, 5 Labs Agency studio',
           },
           aiMarketing: {
             title: 'AI in marketing',
@@ -1579,7 +1602,7 @@ export const translations = {
       items: [
         { value: '150+', label: 'projects shipped' },
         { value: '40', label: 'clients growing' },
-        { value: '12', label: 'countries covered' },
+        { value: '1k+', label: 'students learning' },
         { value: '98%', label: 'client NPS' },
       ],
     },
@@ -1592,6 +1615,8 @@ export const translations = {
       message: 'Message',
       submit: 'Send',
       thanks: 'Thanks! We received your message.',
+      phoneLabel: 'Phone',
+      socialLabel: 'Social media',
     },
     footer: {
       tagline: '5 Labs Agency — a lab for brand, strategy and education.',
@@ -1599,19 +1624,48 @@ export const translations = {
       services: 'Services',
       language: 'Language',
       rights: 'All rights reserved',
+      privacy: 'Privacy',
+      terms: 'Terms',
+    },
+    legal: {
+      updated: 'Last updated: May 2026',
+      privacy: {
+        title: 'Privacy Policy',
+        sections: [
+          { h: 'What data we collect', p: 'We collect the data you share with us through the contact form — your name, email and message — along with the technical information required for the site to work.' },
+          { h: 'How we use data', p: 'We use your data only to respond to your requests, deliver our services and improve the site. We do not sell your data to third parties.' },
+          { h: 'Cookies', p: 'The site uses cookies for core functionality and anonymous analytics. You can disable cookies in your browser settings.' },
+          { h: 'Contact', p: 'For any questions about your data, reach us at fivelabssuport@gmail.com.' },
+        ],
+      },
+      terms: {
+        title: 'Terms of Service',
+        sections: [
+          { h: 'Acceptance of terms', p: 'By using this site you agree to the conditions set out here. If you do not agree with the terms, please do not use the site.' },
+          { h: 'Use of services', p: 'The content and services on the site may be used for lawful purposes only. Reproducing content without permission is prohibited.' },
+          { h: 'Limitation of liability', p: 'The site is provided “as is”. We are not liable for any indirect damages arising from use of the site.' },
+          { h: 'Changes', p: 'We may update these terms from time to time. The current version is always available on this page.' },
+        ],
+      },
+    },
+    aboutIntro: {
+      eyebrow: 'About the company',
+      title: 'A lab that grows brands.',
+      body:
+        '5 Labs Agency is a team that brings strategy, design, production and education together in one ecosystem. Our mission: help businesses move from an idea to measurable results. Not theory — real cases, real growth.',
     },
     mentors: {
       eyebrow: 'The team',
-      title: 'Meet the mentors behind 5 Labs.',
+      title: 'Best mentors fivelabsagency',
       subtitle:
-        'The people running strategy, production, education and partnerships — each with 10+ years of hands-on practice.',
+        'The people running strategy, production, education and partnerships — 5 years on the market.',
       list: [
         {
           name: 'Narmina',
           role: 'Marketing & Meta Ads mentor',
           photo: '/mentors/narmina.jpg',
           objectPosition: '50% 22%',
-          instagram: 'https://instagram.com/narmina',
+          instagram: 'https://www.instagram.com/narmincoach',
           bio: 'Mentor in Marketing and Meta Ads. I help students build a structured approach to promotion — from market and audience analysis to creating strategies that actually generate clients. This is not just theory — you’ll learn how to think like a marketer, launch ads, and control results.',
         },
         {
@@ -1619,23 +1673,15 @@ export const translations = {
           role: 'SMM & content mentor',
           photo: '/mentors/smm.jpg',
           objectPosition: '50% 30%',
-          instagram: 'https://instagram.com/farida',
+          instagram: 'https://www.instagram.com/phareeda.s',
           bio: 'I help you understand how social media works from scratch and how to use it for growth and sales. Everything is explained in simple language: how to promote, create content, and find your audience. With me you’ll be able to confidently launch your own project or level up an existing one — without complicated schemes or unnecessary theory.',
-        },
-        {
-          name: 'Aziza',
-          role: 'Mobilography mentor',
-          photo: '/mentors/aziza.jpg',
-          objectPosition: '50% 25%',
-          instagram: 'https://instagram.com/aziza',
-          bio: 'I help students build a professional approach to mobile content creation — from composition, light and shooting to editing and visual delivery. In class students master not only the technical skills, but also learn to create content that grabs attention, strengthens personal brand and drives promotion.',
         },
         {
           name: 'Aytach',
           role: 'Creative director & design mentor',
           photo: '/mentors/Itach.jpg',
           objectPosition: '50% 28%',
-          instagram: 'https://instagram.com/aytach',
+          instagram: 'https://www.instagram.com/aitajs.blog',
           bio: 'Creative director and design mentor. I help students build visual thinking — from composition and typography to identity systems and creative concepts. In class you don’t just learn to make things "pretty" — you master a systematic approach to design that strengthens the brand and solves real business problems.',
         },
       ],
@@ -1758,11 +1804,11 @@ export const translations = {
       topics: {
         intro: {
           title: 'Intro to marketing',
-          summary: 'The five pillars of marketing and how the 5 Labs team thinks about them.',
+          summary: 'The five pillars of marketing and how the 5 Labs Agency team thinks about them.',
           lessons: [
             'What marketing is and isn\u2019t',
             'The five stages of the funnel',
-            'The 5 Labs approach',
+            'The 5 Labs Agency approach',
           ],
           highlights: [
             'You speak the core vocabulary',
@@ -2002,9 +2048,9 @@ export const translations = {
     },
     hero: {
       eyebrow: 'Агентство нового поколения',
-      title: 'Мы строим бренды, которые звучат громче.',
+      title: 'Лаборатория твоей мечты!',
       subtitle:
-        'Стратегия, дизайн и обучение в одной экосистеме. 5 Labs — ваш партнёр в росте, от идеи до измеримых результатов.',
+        'Стратегия, дизайн и обучение в одной экосистеме. 5 Labs Agency — ваш партнёр в росте, от идеи до измеримых результатов.',
       ctaPrimary: 'Начать проект',
       ctaSecondary: 'Посмотреть работы',
       stat1: 'проектов',
@@ -2012,7 +2058,7 @@ export const translations = {
       stat3: 'стран',
     },
     about: {
-      eyebrow: 'О 5 Labs',
+      eyebrow: 'О 5 Labs Agency',
       title: 'Пять направлений. Одна команда. Бесконечные возможности.',
       p1: 'Мы — мультидисциплинарное агентство, объединяющее стратегию, креатив, технологии, медиа и образование в единой среде.',
       p2: 'Наши лаборатории помогают брендам находить голос, строить сообщества и выпускать продукты, которыми можно гордиться.',
@@ -2201,10 +2247,10 @@ export const translations = {
       corner: '// LAB 03',
       caption: 'Бесконечный цикл • Autoplay',
       items: [
-        { num: '01', text: '3D-рендер' },
-        { num: '02', text: 'Интеракция' },
-        { num: '03', text: 'WebGL' },
-        { num: '04', text: 'Motion-дизайн' },
+        { num: '01', text: 'Маркетинг' },
+        { num: '02', text: 'Видеография' },
+        { num: '03', text: 'Блэкмэджик' },
+        { num: '04', text: 'Сошиал медиа' },
       ],
     },
     education: {
@@ -2234,7 +2280,7 @@ export const translations = {
       eyebrow: 'Образование',
       title: 'Учим тому, что делаем сами.',
       subtitle:
-        'Выбирайте формат, программу и удобный график — записывайтесь напрямую в мессенджер. Ведут практики 5 Labs.',
+        'Выбирайте формат, программу и удобный график — записывайтесь напрямую в мессенджер. Ведут практики 5 Labs Agency.',
       formats: {
         cta: 'Перейти',
         seminars: {
@@ -2257,7 +2303,7 @@ export const translations = {
         },
       },
       why: {
-        eyebrow: 'Почему 5 Labs',
+        eyebrow: 'Почему 5 Labs Agency',
         title: 'Школа, выросшая из агентства.',
         items: [
           {
@@ -2310,7 +2356,7 @@ export const translations = {
           promptEngineering: 'AI как инструмент: промты, цепочки, агенты — под задачи маркетинга.',
           aiVideo: 'AI-видео: идея, визуал, монтаж — от нуля до публикации в одиночку.',
           graphicDesign: 'Базовая графика: композиция, типографика, цвет, фирстиль.',
-          blackMagic: 'Авторская методика 5 Labs — продвинутые техники продвижения.',
+          blackMagic: 'Авторская методика 5 Labs Agency — продвинутые техники продвижения.',
           blackMagicMobilography: 'Black Magic + мобилография в одной программе. Глубже и шире.',
         },
       },
@@ -2555,7 +2601,7 @@ export const translations = {
               { title: 'Продвинутые техники продвижения', desc: '' },
               { title: 'Конверсионные связки', desc: '' },
               { title: 'Креатив на сложных нишах', desc: '' },
-              { title: 'Кейсы 5 Labs', desc: '' },
+              { title: 'Кейсы 5 Labs Agency', desc: '' },
             ],
           },
           blackMagicMobilography: {
@@ -2588,12 +2634,12 @@ export const translations = {
           smmIntensive: {
             title: 'SMM-интенсив',
             format: '2-дневный интенсив',
-            location: 'Стамбул, офис 5 Labs',
+            location: 'Стамбул, офис 5 Labs Agency',
           },
           mobilographyWorkshop: {
             title: 'Мобилография: воркшоп',
             format: '1 день, практика',
-            location: 'Стамбул, студия 5 Labs',
+            location: 'Стамбул, студия 5 Labs Agency',
           },
           aiMarketing: {
             title: 'AI в маркетинге',
@@ -2608,7 +2654,7 @@ export const translations = {
       items: [
         { value: '150+', label: 'проектов в продакшене' },
         { value: '40', label: 'клиентов в росте' },
-        { value: '12', label: 'стран присутствия' },
+        { value: '1к+', label: 'студентов в обучении' },
         { value: '98%', label: 'NPS клиентов' },
       ],
     },
@@ -2621,6 +2667,8 @@ export const translations = {
       message: 'Сообщение',
       submit: 'Отправить',
       thanks: 'Спасибо! Мы получили ваше сообщение.',
+      phoneLabel: 'Телефон',
+      socialLabel: 'Соцсети',
     },
     footer: {
       tagline: '5 Labs Agency — лаборатория бренда, стратегии и образования.',
@@ -2628,19 +2676,48 @@ export const translations = {
       services: 'Услуги',
       language: 'Язык',
       rights: 'Все права защищены',
+      privacy: 'Конфиденциальность',
+      terms: 'Условия',
+    },
+    legal: {
+      updated: 'Последнее обновление: май 2026',
+      privacy: {
+        title: 'Политика конфиденциальности',
+        sections: [
+          { h: 'Какие данные мы собираем', p: 'Мы собираем данные, которые вы передаёте через форму обратной связи — имя, email и сообщение, — а также технические сведения, необходимые для работы сайта.' },
+          { h: 'Как мы используем данные', p: 'Мы используем ваши данные только для ответа на запросы, оказания услуг и улучшения сайта. Мы не продаём ваши данные третьим лицам.' },
+          { h: 'Файлы cookie', p: 'Сайт использует cookie для базовой работы и анонимной аналитики. Вы можете отключить cookie в настройках браузера.' },
+          { h: 'Контакты', p: 'По вопросам о ваших данных пишите на fivelabssuport@gmail.com.' },
+        ],
+      },
+      terms: {
+        title: 'Условия использования',
+        sections: [
+          { h: 'Принятие условий', p: 'Используя этот сайт, вы соглашаетесь с изложенными здесь условиями. Если вы не согласны с условиями, пожалуйста, не используйте сайт.' },
+          { h: 'Использование сервисов', p: 'Контент и сервисы сайта можно использовать только в законных целях. Воспроизведение материалов без разрешения запрещено.' },
+          { h: 'Ограничение ответственности', p: 'Сайт предоставляется «как есть». Мы не несём ответственности за косвенный ущерб, возникший в результате использования сайта.' },
+          { h: 'Изменения', p: 'Мы можем время от времени обновлять эти условия. Актуальная версия всегда доступна на этой странице.' },
+        ],
+      },
+    },
+    aboutIntro: {
+      eyebrow: 'О компании',
+      title: 'Лаборатория, которая растит бренды.',
+      body:
+        '5 Labs Agency — команда, объединяющая стратегию, дизайн, продакшн и обучение в одной экосистеме. Наша миссия — помогать бизнесу проходить путь от идеи до измеримых результатов. Не теория, а реальные кейсы и реальный рост.',
     },
     mentors: {
       eyebrow: 'Команда',
-      title: 'Знакомьтесь — менторы 5 Labs.',
+      title: 'Best mentors fivelabsagency',
       subtitle:
-        'Люди, которые ведут стратегию, продакшн, обучение и партнёрства. У каждого 10+ лет практики в своём направлении.',
+        'Люди, которые ведут стратегию, продакшн, обучение и партнёрства. 5 лет на рынке.',
       list: [
         {
           name: 'Нармина',
           role: 'Ментор по маркетингу и Meta Ads',
           photo: '/mentors/narmina.jpg',
           objectPosition: '50% 22%',
-          instagram: 'https://instagram.com/narmina',
+          instagram: 'https://www.instagram.com/narmincoach',
           bio: 'Ментор по маркетингу и Meta Ads. Помогаю студентам выстраивать системный подход к продвижению: от анализа рынка и целевой аудитории до создания стратегий, которые реально приносят клиентов. На обучении вы не просто изучаете теорию — вы учитесь думать как маркетолог, запускать рекламу и управлять результатом.',
         },
         {
@@ -2648,23 +2725,15 @@ export const translations = {
           role: 'Ментор по SMM и контенту',
           photo: '/mentors/smm.jpg',
           objectPosition: '50% 30%',
-          instagram: 'https://instagram.com/farida',
+          instagram: 'https://www.instagram.com/phareeda.s',
           bio: 'Я помогаю вам с нуля понять, как работают социальные сети, и научиться использовать их для роста и продаж. Объясняю всё простым языком: как продвигаться, создавать контент и находить свою аудиторию. Со мной вы сможете уверенно запустить свой проект или прокачать уже существующий без сложных схем и лишней теории.',
-        },
-        {
-          name: 'Азиза',
-          role: 'Ментор по мобилографии',
-          photo: '/mentors/aziza.jpg',
-          objectPosition: '50% 25%',
-          instagram: 'https://instagram.com/aziza',
-          bio: 'Помогаю выстраивать профессиональный подход к созданию мобильного контента: от работы с композицией, светом и съёмкой до монтажа и визуальной подачи. На обучении студенты осваивают не только технические навыки, но и учатся создавать контент, который привлекает внимание, усиливает личный бренд и помогает в продвижении.',
         },
         {
           name: 'Айтач',
           role: 'Креативный директор и ментор по дизайну',
           photo: '/mentors/Itach.jpg',
           objectPosition: '50% 28%',
-          instagram: 'https://instagram.com/aytach',
+          instagram: 'https://www.instagram.com/aitajs.blog',
           bio: 'Креативный директор и ментор по дизайну. Помогаю студентам выстраивать визуальное мышление: от композиции и типографики до фирменного стиля и креативных концепций. На обучении вы не просто учитесь делать «красиво» — вы осваиваете системный подход к дизайну, который усиливает бренд и решает реальные задачи бизнеса.',
         },
       ],
@@ -2787,11 +2856,11 @@ export const translations = {
       topics: {
         intro: {
           title: 'Введение в маркетинг',
-          summary: 'Пять опор маркетинга и взгляд команды 5 Labs.',
+          summary: 'Пять опор маркетинга и взгляд команды 5 Labs Agency.',
           lessons: [
             'Что такое маркетинг и чем он не является',
             'Пять стадий воронки',
-            'Подход 5 Labs',
+            'Подход 5 Labs Agency',
           ],
           highlights: [
             'Владеешь базовой терминологией',
